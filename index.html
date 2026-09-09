@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eric Liu — Software Engineer</title>
+<meta name="description" content="Yun-Chung (Eric) Liu — software engineer at Morningstar for three years, now at Cornell Tech. Looking for forward-deployed engineering, AI product, AI solutions, and software engineering roles.">
+
+<meta property="og:title" content="Eric Liu — Software Engineer">
+<meta property="og:description" content="Three years at Morningstar Indexes, now at Cornell Tech building grounded Q&amp;A over SEC filings.">
+<meta property="og:type" content="website">
+<!-- Drop a 1200x630 image at media/og-card.png and uncomment:
+<meta property="og:image" content="media/og-card.png"> -->
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2317ac78'/%3E%3Ctext x='16' y='23' font-family='sans-serif' font-size='19' font-weight='700' fill='white' text-anchor='middle'%3EE%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+
+<!-- Set the theme before first paint so dark-mode visitors never see a white flash. -->
+<script>
+  (function () {
+    try {
+      var saved = localStorage.getItem('theme');
+      var dark = saved ? saved === 'dark'
+        : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+    } catch (e) { /* leave the default */ }
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="nav">
+  <div class="wrap nav__inner">
+    <a class="brand" href="#top"><span class="brand__dot"></span>Eric Liu</a>
+
+    <ul class="nav__links" id="navLinks">
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <button class="icon-btn nav__toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M4 7h16M4 12h16M4 17h16"/>
+      </svg>
+    </button>
+
+    <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode">
+      <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
+      </svg>
+      <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+        <circle cx="12" cy="12" r="4.2"/>
+        <path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============================ HERO ============================ -->
+<section class="hero wrap" id="top">
+  <div class="hero__grid">
+
+    <div class="hero__copy">
+      <p class="eyebrow">Software engineer &middot; New York</p>
+      <h1 class="display">Eric Liu</h1>
+      <p class="fullname">Yun-Chung Liu, but everyone calls me Eric.</p>
+
+      <p class="lede">
+        I studied Computer Science at <strong>Washington University in St. Louis</strong> with a
+        minor in Human-Computer Interaction, spent three years at <strong>Morningstar</strong>
+        building the systems behind their index data, and I&rsquo;m now at
+        <strong>Cornell Tech</strong> through 2028 &mdash; currently building grounded Q&amp;A over
+        SEC filings.
+      </p>
+
+      <p class="lede">
+        Those three years were straight software engineering. What I want next is the work where
+        engineering meets the customer and the model &mdash; sitting with the people using the
+        thing, and shipping until it actually holds up.
+      </p>
+
+      <p class="seeking">
+        <span class="dot"></span>
+        <span>Looking for <b>forward-deployed engineering</b>, <b>AI product</b>,
+        <b>AI solutions</b>, and <b>software engineering</b> roles.</span>
+      </p>
+
+      <ul class="hero__meta">
+        <li class="chip"><span class="dot"></span>M.S. Information Systems, Cornell Tech &rsquo;28</li>
+        <li class="chip"><span class="dot"></span>B.S. Computer Science, WashU &rsquo;23</li>
+        <li class="chip"><span class="dot"></span>3 years at Morningstar</li>
+        <li class="chip"><span class="dot"></span>Python &middot; Java &middot; React</li>
+      </ul>
+
+      <div class="actions">
+        <a class="btn btn--primary" href="#projects" data-open="sec-simplifier">
+          See what I&rsquo;m building
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn--ghost" href="mailto:YL4445@cornell.edu">Get in touch</a>
+      </div>
+    </div>
+
+    <!-- ---------- Desk scene (hand-built SVG; colors follow the CSS tokens) ---------- -->
+    <div class="hero__art">
+      <svg class="scene" viewBox="0 0 720 560" role="img" aria-labelledby="sceneTitle">
+        <title id="sceneTitle">Illustration of a desk: a monitor showing a dashboard, a laptop, a mug of coffee, a plant, and floating cards for a filing and a cited answer.</title>
+
+        <!-- background -->
+        <ellipse class="blob" cx="372" cy="272" rx="272" ry="236"/>
+        <circle class="glow" cx="612" cy="196" r="66" fill="none" stroke="var(--mint-soft)" stroke-width="3"/>
+        <circle class="glow" cx="96" cy="300" r="26" fill="none" stroke="var(--mint-soft)" stroke-width="3"/>
+
+        <!-- floating filing card -->
+        <g class="float">
+          <g transform="translate(34 128)">
+            <rect class="fill-card stroke thin" x="0" y="0" width="118" height="92" rx="10"/>
+            <rect class="fill-mint-strong" x="16" y="18" width="46" height="9" rx="4.5"/>
+            <rect class="fill-mint" x="16" y="40" width="86" height="7" rx="3.5"/>
+            <rect class="fill-mint" x="16" y="56" width="64" height="7" rx="3.5"/>
+            <rect class="fill-mint" x="16" y="72" width="76" height="7" rx="3.5"/>
+          </g>
+        </g>
+
+        <!-- floating cited-answer bubble -->
+        <g class="float float--b">
+          <g transform="translate(520 84)">
+            <rect class="fill-card stroke thin" x="0" y="0" width="150" height="86" rx="12"/>
+            <path class="fill-card stroke thin" d="M34 86 L30 108 L58 86 Z"/>
+            <circle class="fill-mint stroke thin" cx="30" cy="30" r="13"/>
+            <path d="M24 30.5 l4.5 4.5 L37 25" fill="none" stroke="var(--mint)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect class="fill-mint" x="54" y="22" width="76" height="7" rx="3.5"/>
+            <rect class="fill-mint" x="54" y="38" width="52" height="7" rx="3.5"/>
+            <rect class="fill-mint" x="20" y="58" width="110" height="7" rx="3.5"/>
+          </g>
+        </g>
+
+        <!-- floor -->
+        <path class="stroke thin" d="M24 540 H700" stroke-opacity=".35"/>
+
+        <!-- desk -->
+        <rect class="fill-card stroke" x="50" y="430" width="630" height="17" rx="6"/>
+        <rect class="fill-card stroke" x="112" y="446" width="15" height="94" rx="4"/>
+        <rect class="fill-card stroke" x="600" y="446" width="15" height="94" rx="4"/>
+
+        <!-- monitor -->
+        <rect class="fill-card stroke" x="312" y="416" width="108" height="14" rx="6"/>
+        <rect class="fill-card stroke" x="352" y="372" width="28" height="48" rx="4"/>
+        <rect class="fill-card stroke" x="222" y="148" width="288" height="226" rx="14"/>
+        <rect class="fill-paper stroke thin" x="240" y="166" width="252" height="176" rx="7"/>
+        <circle class="fill-mint" cx="254" cy="180" r="4"/>
+        <circle class="fill-mint" cx="268" cy="180" r="4"/>
+        <circle class="fill-mint" cx="282" cy="180" r="4"/>
+        <!-- query line + caret -->
+        <rect class="fill-mint-strong" x="254" y="198" width="96" height="7" rx="3.5"/>
+        <rect class="fill-mint" x="358" y="198" width="52" height="7" rx="3.5"/>
+        <rect class="cursor fill-ink" x="418" y="195" width="3" height="13" rx="1.5"/>
+        <!-- little chart -->
+        <path class="stroke thin" d="M258 330 H474" stroke-opacity=".4"/>
+        <rect class="bar fill-mint stroke thin" x="268" y="286" width="26" height="44" rx="4"/>
+        <rect class="bar bar--2 fill-mint-strong" x="308" y="256" width="26" height="74" rx="4"/>
+        <rect class="bar bar--3 fill-mint stroke thin" x="348" y="298" width="26" height="32" rx="4"/>
+        <rect class="bar bar--4 fill-mint stroke thin" x="388" y="266" width="26" height="64" rx="4"/>
+        <rect class="fill-mint" x="258" y="222" width="140" height="6" rx="3"/>
+        <rect class="fill-mint" x="258" y="238" width="108" height="6" rx="3"/>
+
+        <!-- laptop -->
+        <path class="fill-card stroke" d="M520 414 L534 330 L644 330 L654 414 Z"/>
+        <path class="fill-mint" d="M532 406 L544 340 L636 340 L644 406 Z"/>
+        <rect class="fill-mint-strong" x="552" y="356" width="52" height="6" rx="3"/>
+        <rect class="fill-card" x="548" y="372" width="70" height="6" rx="3" opacity=".8"/>
+        <path class="fill-card stroke" d="M502 414 L664 414 L676 430 L490 430 Z"/>
+
+        <!-- papers -->
+        <rect class="fill-card stroke thin" x="424" y="404" width="74" height="10" rx="3" transform="rotate(-3 461 409)"/>
+        <rect class="fill-card stroke thin" x="428" y="414" width="74" height="10" rx="3" transform="rotate(2 465 419)"/>
+        <rect class="fill-card stroke thin" x="424" y="422" width="74" height="8" rx="3"/>
+
+        <!-- plant -->
+        <path class="leaf fill-mint stroke thin" d="M124 384 C 102 358 104 330 122 316 C 140 332 140 362 124 384 Z"/>
+        <path class="leaf leaf--b fill-mint stroke thin" d="M122 386 C 96 378 78 356 86 336 C 108 340 122 362 122 386 Z"/>
+        <path class="leaf leaf--c fill-mint stroke thin" d="M126 386 C 152 378 168 356 160 336 C 138 340 126 362 126 386 Z"/>
+        <path class="fill-card stroke" d="M98 392 L152 392 L144 430 L106 430 Z"/>
+        <rect class="fill-card stroke" x="92" y="382" width="66" height="12" rx="4"/>
+
+        <!-- mug -->
+        <path class="steam stroke thin" d="M190 380 C 184 370 196 364 190 350"/>
+        <path class="steam steam--2 stroke thin" d="M202 380 C 196 368 208 362 202 346"/>
+        <path class="steam steam--3 stroke thin" d="M214 380 C 208 370 220 364 214 352"/>
+        <path class="stroke" d="M226 398 C 244 398 244 422 224 422" fill="none"/>
+        <path class="fill-card stroke" d="M176 390 L228 390 L220 430 L184 430 Z"/>
+        <ellipse class="fill-mint stroke thin" cx="202" cy="390" rx="26" ry="7"/>
+      </svg>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================ BUILDING ============================ -->
+<section class="section" id="projects">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <p class="eyebrow">Independent work</p>
+      <h2>Projects</h2>
+    </div>
+
+    <div class="timeline timeline--projects">
+
+      <article class="job reveal">
+        <div class="job__when">
+          <b>Independent</b>
+          Current project
+          <span class="status"><span class="pulse"></span>In progress</span>
+        </div>
+
+        <details class="job__body" id="sec-simplifier">
+          <summary class="job__summary">
+            <span class="job__titles">
+              <h3>SEC Simplifier</h3>
+              <span class="job__role">Grounded Q&amp;A over SEC EDGAR filings</span>
+            </span>
+            <span class="job__more"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+
+          <div class="job__detail">
+            <ul class="tags">
+              <li>Python</li><li>RAG</li><li>Chroma</li><li>BM25</li><li>LLM APIs</li><li>pytest</li>
+            </ul>
+
+            <p>
+              Ask a plain-English question about any US public company and get an answer built only
+              from that company&rsquo;s SEC filings &mdash; on-demand EDGAR ingestion, table-aware
+              chunking, and hybrid BM25 + vector retrieval, with no RAG framework underneath. Every
+              answer cites its filing, every quote is checked against the original text, and when
+              the evidence isn&rsquo;t there it says <strong>&ldquo;not disclosed&rdquo;</strong>
+              rather than guessing. I built the eval harness alongside it, which is how I found that
+              abstention thresholds tuned on one company don&rsquo;t generalize to the next.
+            </p>
+
+            <div class="stats">
+              <div class="stat"><div class="stat__n">24/30</div><div class="stat__l">Golden-set accuracy</div></div>
+              <div class="stat"><div class="stat__n">100%</div><div class="stat__l">Retrieval recall</div></div>
+              <div class="stat"><div class="stat__n">6</div><div class="stat__l">Companies evaluated</div></div>
+              <div class="stat"><div class="stat__n">136</div><div class="stat__l">Tests</div></div>
+            </div>
+
+            <!-- =====================================================================
+                 MEDIA SLOTS - replace any block below with real content.
+
+                 IMAGE:
+                 <figure class="media">
+                   <img src="media/sec-simplifier/architecture.png" alt="Retrieval pipeline">
+                   <figcaption>Hybrid BM25 + vector retrieval over a per-company index.</figcaption>
+                 </figure>
+
+                 VIDEO (screen recording):
+                 <figure class="media">
+                   <video src="media/sec-simplifier/demo.mp4" controls playsinline
+                          poster="media/sec-simplifier/demo-poster.png"></video>
+                   <figcaption>Asking about segment revenue, with citations.</figcaption>
+                 </figure>
+
+                 SLIDES / YOUTUBE / LOOM:
+                 <figure class="media media--embed">
+                   <iframe src="PASTE_EMBED_URL" title="SEC Simplifier deck" allowfullscreen loading="lazy"></iframe>
+                   <figcaption>Project walkthrough deck.</figcaption>
+                 </figure>
+                 ===================================================================== -->
+            <div class="media-grid">
+
+              <div class="media-slot media-slot--wide">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="14" height="14" rx="2.5"/><path d="M16.5 10.5l5-3v9l-5-3z"/></svg>
+                <b>Demo video</b>
+                <span>A screen recording: question in, cited answer out, plus one &ldquo;not disclosed&rdquo; case.</span>
+                <code>media/sec-simplifier/demo.mp4</code>
+              </div>
+
+              <div class="media-slot">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"/><circle cx="8.5" cy="9.5" r="1.8"/><path d="M3.5 17l5-5 4.5 4.5 3-2.5 4.5 4"/></svg>
+                <b>Architecture diagram</b>
+                <span>Ingestion &rarr; chunking &rarr; index &rarr; hybrid retrieval &rarr; verification.</span>
+                <code>media/sec-simplifier/architecture.png</code>
+              </div>
+
+              <div class="media-slot">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V9M10 20V4M16 20v-8M22 20H2"/></svg>
+                <b>Eval results</b>
+                <span>A screenshot of the golden-set report or the baseline-tracking output.</span>
+                <code>media/sec-simplifier/eval.png</code>
+              </div>
+
+              <div class="media-slot media-slot--wide">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M12 16v4M8 20h8"/></svg>
+                <b>Slides</b>
+                <span>Publish a deck to the web and paste the embed URL here.</span>
+                <code>&lt;iframe src="..."&gt;</code>
+              </div>
+
+            </div>
+          </div>
+        </details>
+      </article>
+
+      <article class="job reveal">
+        <div class="job__when">
+          <b>Independent</b>
+          Sept 2024 &ndash; June 2025
+        </div>
+
+        <details class="job__body" id="fridayflicks">
+          <summary class="job__summary">
+            <span class="job__titles">
+              <h3>FridayFlicks</h3>
+              <span class="job__role">Spoken movie reviews, scored on-device</span>
+            </span>
+            <span class="job__more"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+
+          <div class="job__detail">
+            <ul class="tags">
+              <li>Android</li><li>TensorFlow Lite</li><li>Speech-to-text</li>
+            </ul>
+
+            <p>
+              An Android app that turns a spoken movie review into a numeric rating &mdash; Google
+              Assistant Service for voice-to-text, then a TensorFlow Lite model scoring the
+              sentiment on-device, so the rating comes from what you actually said.
+            </p>
+
+            <div class="media-grid">
+              <div class="media-slot">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2.5" width="14" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg>
+                <b>FridayFlicks screens</b>
+                <span>App screenshots, or a short clip of a spoken review being scored.</span>
+                <code>media/fridayflicks/</code>
+              </div>
+            </div>
+          </div>
+        </details>
+      </article>
+
+      <article class="job reveal">
+        <div class="job__when">
+          <b>Team of 4</b>
+          Spring 2022
+        </div>
+
+        <details class="job__body" id="bear-run">
+          <summary class="job__summary">
+            <span class="job__titles">
+              <h3>WashU Bear Run</h3>
+              <span class="job__role">Unity arcade game, concept to deployment</span>
+            </span>
+            <span class="job__more"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+
+          <div class="job__detail">
+            <ul class="tags">
+              <li>Unity</li><li>C#</li><li>Game design</li>
+            </ul>
+
+            <p>
+              An arcade game taken from concept to deployment in Unity and C#. I led the team
+              through the design decisions and stitched together obstacle dodging, power-ups, and
+              scoring.
+            </p>
+
+            <div class="media-grid">
+              <div class="media-slot">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="14" height="14" rx="2.5"/><path d="M16.5 10.5l5-3v9l-5-3z"/></svg>
+                <b>Bear Run gameplay</b>
+                <span>A short clip of a run, or the title screen.</span>
+                <code>media/bear-run/gameplay.mp4</code>
+              </div>
+            </div>
+          </div>
+        </details>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================ WORK ============================ -->
+<section class="section section--tint" id="experience">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <p class="eyebrow">Full-time &amp; internships</p>
+      <h2>Experience</h2>
+    </div>
+
+    <div class="timeline timeline--work">
+
+      <article class="job reveal">
+        <div class="job__when">
+          <b>Morningstar</b>
+          July 2023 &ndash; June 2026<br>Chicago, IL
+        </div>
+
+        <details class="job__body">
+          <summary class="job__summary">
+            <span class="job__titles">
+              <h3>Software Engineer</h3>
+              <span class="job__role">Morningstar Indexes</span>
+            </span>
+            <span class="job__more"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+
+          <div class="job__detail">
+            <p>
+              I spent three years on the systems behind Morningstar&rsquo;s index data &mdash; the
+              constituents, hedges, and FX rates that institutional clients license and build
+              products on. Most of my work sat at the seam between that data and the people who
+              depend on it: getting files out to clients reliably, giving the operations team a way
+              to see what the data was doing, and building the client-facing surfaces around it.
+              Mostly Java and Spring Boot with Hibernate on the backend, React on the front.
+            </p>
+            <ul class="job__wins">
+              <li>
+                Led development of the <strong>Historical Bulk Delivery</strong> system, streamlining
+                file delivery to 1,000+ clients and cutting data input from days to minutes.
+              </li>
+              <li>
+                Built the <strong>Portfolio Observability</strong> page &mdash; index variants,
+                constituents, hedge data, and FX rates in one place, with endpoints for data reload
+                and recalculation. It became the first stop when something looked wrong.
+              </li>
+              <li>
+                Implemented the <strong>SmartX data delivery</strong> feature in Spring Boot and HCL,
+                generating <strong>$50K in annual revenue</strong>.
+              </li>
+              <li>
+                Built the structured document table on
+                <a href="https://indexes.morningstar.com/resources" target="_blank" rel="noopener">indexes.morningstar.com/resources</a>,
+                consolidating 200+ index documents for client self-service.
+              </li>
+              <li>
+                Drove a <strong>Stretch initiative</strong> consolidating cross-departmental data
+                into one dashboard for technical leadership, using Morningstar AI and evaluating
+                external vendor datasets to sharpen outlier detection.
+              </li>
+            </ul>
+
+            <!-- Anything publicly shareable: UI screenshots, an architecture sketch, a redacted demo. -->
+            <div class="media-grid">
+              <div class="media-slot media-slot--wide">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 9h18M8 9v11"/></svg>
+                <b>Morningstar work</b>
+                <span>Screens from Portfolio Observability or Historical Bulk Delivery, a diagram, or a short walkthrough &mdash; whatever is safe to show publicly.</span>
+                <code>media/work/morningstar/</code>
+              </div>
+            </div>
+          </div>
+        </details>
+      </article>
+
+      <article class="job reveal">
+        <div class="job__when">
+          <b>LB Networks</b>
+          June 2022 &ndash; Sept 2022<br>St. Louis, MO
+        </div>
+
+        <details class="job__body">
+          <summary class="job__summary">
+            <span class="job__titles">
+              <h3>Software UX Developer Intern</h3>
+              <span class="job__role">OcularIP</span>
+            </span>
+            <span class="job__more"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+
+          <div class="job__detail">
+            <p>
+              My first job where real customers were on the other end of the screen. I worked on
+              OcularIP 6.0.4, a network monitoring product used by 130 service provider companies,
+              building and improving site functionality in ReactJS and Material UI. I redesigned the
+              Subscription Panel&rsquo;s graph visualizations for clarity and cleaned up its button
+              components &mdash; small changes, but the kind operators notice every day.
+            </p>
+
+            <!-- Optional: add a media-grid here, same pattern as above. -->
+          </div>
+        </details>
+      </article>
+
+      <article class="job reveal">
+        <div class="job__when">
+          <b>Ford</b>
+          June 2021 &ndash; Aug 2021<br>Shanghai, CN
+        </div>
+
+        <details class="job__body">
+          <summary class="job__summary">
+            <span class="job__titles">
+              <h3>Data Science Intern</h3>
+              <span class="job__role">Ford Lincoln, China</span>
+            </span>
+            <span class="job__more"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+
+          <div class="job__detail">
+            <p>
+              I worked with the Lincoln team on a question their project managers kept asking: of
+              everyone who walks into a showroom, who actually becomes a customer? I ran SQL
+              correlation analysis across 100,000+ prospective customers &mdash; age, showroom
+              visits, number of test drives, and more &mdash; and isolated the top three factors
+              driving conversion. Then I built a ReactJS dashboard so the findings were something
+              managers could explore themselves when allocating resources, rather than a slide they
+              saw once.
+            </p>
+
+            <div class="media-grid">
+              <div class="media-slot">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 21H3V3"/><path d="M7 15l4-5 3 3 5-7"/></svg>
+                <b>Ford dashboard</b>
+                <span>A screenshot of the conversion dashboard, or a chart of the three factors (anonymized).</span>
+                <code>media/work/ford/</code>
+              </div>
+            </div>
+          </div>
+        </details>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CONTACT ============================ -->
+<section class="section" id="contact">
+  <div class="wrap contact">
+    <div class="reveal contact__intro">
+      <!-- Save your photo as media/profile.jpg. A head-and-shoulders crop works best;
+           the frame is 4:5 and the image is centered slightly high. Until the file
+           exists, this shows a labeled placeholder instead of a broken image. -->
+      <figure class="portrait">
+        <img src="media/profile.jpg" alt="Eric Liu" loading="lazy">
+      </figure>
+
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h2>Get in touch</h2>
+        <p class="lede">
+          I&rsquo;m looking for forward-deployed engineering, AI product, AI solutions, and
+          software engineering roles &mdash; and always glad to talk to people building in fintech,
+          data infrastructure, or applied AI.
+        </p>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <ul class="links">
+        <li>
+          <a href="mailto:YL4445@cornell.edu">
+            <span><span class="what">Email</span><br>YL4445@cornell.edu</span>
+            <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/ericliu-/" target="_blank" rel="noopener">
+            <span><span class="what">LinkedIn</span><br>in/ericliu-</span>
+            <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/eliu1122" target="_blank" rel="noopener">
+            <span><span class="what">GitHub</span><br>eliu1122</span>
+            <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+          </a>
+        </li>
+        <!-- Drop the PDF at media/eric-liu-resume.pdf -->
+        <li>
+          <a href="media/eric-liu-resume.pdf">
+            <span><span class="what">Résumé</span><br>PDF</span>
+            <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M7 12l5 5 5-5M5 20h14"/></svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer wrap">
+  <span>&copy; <span id="year">2026</span> Yun-Chung (Eric) Liu &middot; New York, NY</span>
+  <span>Built by hand. No frameworks were harmed.</span>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
