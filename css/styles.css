@@ -98,12 +98,9 @@ h1, h2, h3, h4 {
 }
 
 .display {
-  font-size: clamp(3rem, 7vw, 5rem);
-  line-height: 0.98;
-  letter-spacing: -0.04em;
-}
-.fullname {
-  color: var(--muted); font-size: .95rem; margin: .85rem 0 0;
+  font-size: clamp(2.5rem, 6vw, 4.25rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
 }
 
 .eyebrow {

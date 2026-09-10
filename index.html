@@ -71,21 +71,19 @@
 
     <div class="hero__copy">
       <p class="eyebrow">Software engineer &middot; New York</p>
-      <h1 class="display">Eric Liu</h1>
-      <p class="fullname">Yun-Chung Liu, but everyone calls me Eric.</p>
+      <h1 class="display">Yun-Chung (Eric) Liu</h1>
 
       <p class="lede">
-        I studied Computer Science at <strong>Washington University in St. Louis</strong> with a
-        minor in Human-Computer Interaction, spent three years at <strong>Morningstar</strong>
-        building the systems behind their index data, and I&rsquo;m now at
-        <strong>Cornell Tech</strong> through 2028 &mdash; currently building grounded Q&amp;A over
-        SEC filings.
+        I studied Computer Science at <strong>Washington University in St. Louis</strong>, with a
+        minor in Human-Computer Interaction. After that I spent three years at
+        <strong>Morningstar</strong>, working on the systems behind their index data. I&rsquo;m now
+        at <strong>Cornell Tech</strong> through 2028, and building a Q&amp;A tool for SEC filings
+        on the side.
       </p>
 
       <p class="lede">
-        Those three years were straight software engineering. What I want next is the work where
-        engineering meets the customer and the model &mdash; sitting with the people using the
-        thing, and shipping until it actually holds up.
+        That work was mostly backend. What I want to do next is closer to the product and the
+        people using it: sitting with them, and staying on the problem until it actually works.
       </p>
 
       <p class="seeking">
@@ -237,13 +235,15 @@
             </ul>
 
             <p>
-              Ask a plain-English question about any US public company and get an answer built only
-              from that company&rsquo;s SEC filings &mdash; on-demand EDGAR ingestion, table-aware
-              chunking, and hybrid BM25 + vector retrieval, with no RAG framework underneath. Every
-              answer cites its filing, every quote is checked against the original text, and when
-              the evidence isn&rsquo;t there it says <strong>&ldquo;not disclosed&rdquo;</strong>
-              rather than guessing. I built the eval harness alongside it, which is how I found that
-              abstention thresholds tuned on one company don&rsquo;t generalize to the next.
+              You ask a plain-English question about a US public company, and it answers using only
+              that company&rsquo;s SEC filings. It pulls the filings from EDGAR on demand, chunks
+              them so tables stay intact, and retrieves with a mix of keyword (BM25) and vector
+              search. There&rsquo;s no RAG framework under it; I wrote that part myself. Every answer
+              links to the filing it came from, and each quote is checked against the source text
+              before it&rsquo;s shown. If the filings don&rsquo;t cover the question, it says
+              <strong>&ldquo;not disclosed&rdquo;</strong> instead of guessing. I built an eval set
+              at the same time, and that&rsquo;s what caught a problem: the thresholds I&rsquo;d
+              tuned for when to abstain on one company didn&rsquo;t hold up on the next one.
             </p>
 
             <div class="stats">
@@ -331,9 +331,10 @@
             </ul>
 
             <p>
-              An Android app that turns a spoken movie review into a numeric rating &mdash; Google
-              Assistant Service for voice-to-text, then a TensorFlow Lite model scoring the
-              sentiment on-device, so the rating comes from what you actually said.
+              An Android app that turns a spoken movie review into a rating. It uses Google
+              Assistant Service to transcribe what you say, then runs a TensorFlow Lite sentiment
+              model on the phone to score it. The point was that the rating should come from your
+              actual words, not a star you tap without thinking about it.
             </p>
 
             <div class="media-grid">
@@ -374,9 +375,8 @@
             </ul>
 
             <p>
-              An arcade game taken from concept to deployment in Unity and C#. I led the team
-              through the design decisions and stitched together obstacle dodging, power-ups, and
-              scoring.
+              A small arcade game built in Unity and C#, start to finish. I led the team of four,
+              ran the design calls, and put together the obstacle dodging, power-ups, and scoring.
             </p>
 
             <div class="media-grid">
@@ -433,36 +433,38 @@
 
           <div class="job__detail">
             <p>
-              I spent three years on the systems behind Morningstar&rsquo;s index data &mdash; the
-              constituents, hedges, and FX rates that institutional clients license and build
-              products on. Most of my work sat at the seam between that data and the people who
-              depend on it: getting files out to clients reliably, giving the operations team a way
-              to see what the data was doing, and building the client-facing surfaces around it.
-              Mostly Java and Spring Boot with Hibernate on the backend, React on the front.
+              For three years I worked on the systems behind Morningstar&rsquo;s index data: the
+              constituents, hedges, and FX rates that clients license and build products on. Most of
+              what I did was connect that data to the people who rely on it. That meant getting
+              files out to clients reliably, building tools so the operations team could see what
+              the data was doing, and working on the client-facing pages. Backend was Java, Spring
+              Boot, and Hibernate; frontend was React.
             </p>
             <ul class="job__wins">
               <li>
-                Led development of the <strong>Historical Bulk Delivery</strong> system, streamlining
-                file delivery to 1,000+ clients and cutting data input from days to minutes.
+                Led the <strong>Historical Bulk Delivery</strong> system. It got files out to over
+                1,000 clients and brought data entry down from days to minutes.
               </li>
               <li>
-                Built the <strong>Portfolio Observability</strong> page &mdash; index variants,
-                constituents, hedge data, and FX rates in one place, with endpoints for data reload
-                and recalculation. It became the first stop when something looked wrong.
+                Built the <strong>Portfolio Observability</strong> page: index variants,
+                constituents, hedge data, and FX rates in one view, with buttons to reload and
+                recalculate the data. It&rsquo;s where the team looked first when something seemed
+                off.
               </li>
               <li>
-                Implemented the <strong>SmartX data delivery</strong> feature in Spring Boot and HCL,
-                generating <strong>$50K in annual revenue</strong>.
+                Built the <strong>SmartX data delivery</strong> feature in Spring Boot and HCL. It
+                brings in about <strong>$50K a year</strong>.
               </li>
               <li>
-                Built the structured document table on
+                Built the document table on
                 <a href="https://indexes.morningstar.com/resources" target="_blank" rel="noopener">indexes.morningstar.com/resources</a>,
-                consolidating 200+ index documents for client self-service.
+                pulling 200+ index documents into one place so clients could find them without
+                asking us.
               </li>
               <li>
-                Drove a <strong>Stretch initiative</strong> consolidating cross-departmental data
-                into one dashboard for technical leadership, using Morningstar AI and evaluating
-                external vendor datasets to sharpen outlier detection.
+                Ran a stretch project pulling data from several teams into one dashboard for
+                engineering leadership, using Morningstar&rsquo;s internal AI and testing outside
+                vendor datasets to improve outlier detection.
               </li>
             </ul>
 
@@ -538,8 +540,8 @@
               </div>
 
               <figcaption class="obs__caption">
-                Recreated layout of the Portfolio Observability page I built &mdash; every name and
-                number here is invented for illustration, not real portfolio data.
+                A recreation of the Portfolio Observability page I built. The names and numbers here
+                are made up; none of it is real portfolio data.
               </figcaption>
             </figure>
           </div>
@@ -563,11 +565,11 @@
 
           <div class="job__detail">
             <p>
-              My first job where real customers were on the other end of the screen. I worked on
-              OcularIP 6.0.4, a network monitoring product used by 130 service provider companies,
-              building and improving site functionality in ReactJS and Material UI. I redesigned the
-              Subscription Panel&rsquo;s graph visualizations for clarity and cleaned up its button
-              components &mdash; small changes, but the kind operators notice every day.
+              My first job with real customers on the other end. I worked on OcularIP 6.0.4, a
+              network monitoring product used by 130 service providers, adding and fixing features
+              in ReactJS and Material UI. I reworked the graphs on the Subscription Panel to be
+              easier to read and cleaned up its buttons. Small stuff, but the kind of thing people
+              using it every day would notice.
             </p>
 
             <!-- Optional: add a media-grid here, same pattern as above. -->
@@ -592,13 +594,11 @@
 
           <div class="job__detail">
             <p>
-              I worked with the Lincoln team on a question their project managers kept asking: of
-              everyone who walks into a showroom, who actually becomes a customer? I ran SQL
-              correlation analysis across 100,000+ prospective customers &mdash; age, showroom
-              visits, number of test drives, and more &mdash; and isolated the top three factors
-              driving conversion. Then I built a ReactJS dashboard so the findings were something
-              managers could explore themselves when allocating resources, rather than a slide they
-              saw once.
+              The Lincoln team kept asking one question: of everyone who walks into a showroom, who
+              actually buys a car? I ran correlation analysis in SQL across 100,000+ prospective
+              customers, looking at age, showroom visits, test drives, and other factors, and found
+              the three that mattered most for conversion. Then I built a dashboard in ReactJS so
+              managers could dig into it themselves instead of seeing the numbers once in a slide.
             </p>
 
             <!-- Slot removed on request. To bring it back, uncomment and drop a file at
@@ -628,7 +628,7 @@
            the frame is 4:5 and the image is centered slightly high. Until the file
            exists, this shows a labeled placeholder instead of a broken image. -->
       <figure class="portrait">
-        <img src="media/profile.jpg" alt="Eric Liu" loading="lazy">
+        <img src="media/profile.jpg" alt="Yun-Chung (Eric) Liu" loading="lazy">
       </figure>
 
       <div>
@@ -636,8 +636,8 @@
         <h2>Get in touch</h2>
         <p class="lede">
           I&rsquo;m looking for forward-deployed engineering, AI product, AI solutions, and
-          software engineering roles &mdash; and always glad to talk to people building in fintech,
-          data infrastructure, or applied AI.
+          software engineering roles. Happy to talk to anyone working on fintech, data
+          infrastructure, or applied AI.
         </p>
       </div>
     </div>
