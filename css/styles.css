@@ -245,32 +245,16 @@ h1, h2, h3, h4 {
 .stat__n { font-family: var(--display); font-size: 1.7rem; font-weight: 700; letter-spacing: -.03em; }
 .stat__l { font-size: .82rem; color: var(--muted); margin-top: .15rem; }
 
-/* ---------- Media slots ---------- */
+/* ---------- Media ---------- */
 
 .media-grid {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
   gap: 1.25rem; margin-top: 2.25rem;
 }
 
-.media-slot {
-  border: 1.5px dashed var(--line-strong); border-radius: var(--radius);
-  background-image: repeating-linear-gradient(45deg, transparent, transparent 12px, var(--mint-wash) 12px, var(--mint-wash) 24px);
-  aspect-ratio: 16 / 10;
-  display: grid; place-content: center; align-content: center;
-  text-align: center; gap: .45rem; padding: 1.5rem;
-  color: var(--muted); min-width: 0; transition: border-color .25s, color .25s;
-}
-.media-slot:hover { border-color: var(--mint); color: var(--ink-2); }
-.media-slot svg { width: 30px; height: 30px; margin-inline: auto; opacity: .7; }
-.media-slot b { font-family: var(--display); font-size: 1rem; color: var(--ink-2); font-weight: 600; }
-.media-slot span { font-size: .82rem; max-width: 36ch; }
-.media-slot code { font-family: var(--mono); font-size: .76rem; color: var(--mint); }
-.media-slot--wide { aspect-ratio: 16 / 7; grid-column: 1 / -1; }
-
-/* A slot that already points at a real file — shows the image once it loads, and falls
-   back to the same dashed placeholder as .media-slot if the file isn't there yet (main.js
-   adds .is-missing on the image's error event). Give it data-label/data-path and it's a
-   drop-in replacement for any single-image .media-slot. */
+/* A media slot that points at a real file — shows the image once it loads, and falls back
+   to a labeled dashed placeholder if the file isn't there yet (main.js adds .is-missing on
+   the image's error event). Give it data-label/data-path and drop an <img> inside. */
 .shot { margin: 0; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); background: var(--card); aspect-ratio: 16 / 10; }
 .shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .shot--wide { aspect-ratio: 16 / 7; grid-column: 1 / -1; }
@@ -331,10 +315,16 @@ h1, h2, h3, h4 {
   .tilt-card__hint { display: none; }
 }
 
-/* Swap .media-slot for .media once real media is dropped in (see README). */
+/* A framed image, video, or embed. */
 .media { margin: 0; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); background: var(--card); }
 .media img, .media video { width: 100%; height: auto; }
 .media--embed iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; }
+
+/* A tall app screenshot: cap the width so it reads as the narrow single-column app it is,
+   and let it scroll inside a fixed-height frame instead of running 900px down the page. */
+.media--app { max-width: 480px; }
+.media--app__scroll { max-height: 560px; overflow-y: auto; overscroll-behavior: contain; }
+.media--app__scroll img { display: block; }
 
 .media figcaption { font-size: .85rem; color: var(--muted); padding: .75rem 1rem; border-top: 1px solid var(--line); }
 

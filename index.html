@@ -223,7 +223,7 @@
         <details class="job__body" id="sec-simplifier">
           <summary class="job__summary">
             <span class="job__titles">
-              <h3>SEC Simplifier</h3>
+              <h3>Footnote</h3>
               <span class="job__role">Grounded Q&amp;A over SEC EDGAR filings</span>
             </span>
             <span class="job__more"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
@@ -253,59 +253,17 @@
               <div class="stat"><div class="stat__n">136</div><div class="stat__l">Tests</div></div>
             </div>
 
-            <!-- =====================================================================
-                 MEDIA SLOTS - replace any block below with real content.
-
-                 IMAGE:
-                 <figure class="media">
-                   <img src="media/sec-simplifier/architecture.png" alt="Retrieval pipeline">
-                   <figcaption>Hybrid BM25 + vector retrieval over a per-company index.</figcaption>
-                 </figure>
-
-                 VIDEO (screen recording):
-                 <figure class="media">
-                   <video src="media/sec-simplifier/demo.mp4" controls playsinline
-                          poster="media/sec-simplifier/demo-poster.png"></video>
-                   <figcaption>Asking about segment revenue, with citations.</figcaption>
-                 </figure>
-
-                 SLIDES / YOUTUBE / LOOM:
-                 <figure class="media media--embed">
-                   <iframe src="PASTE_EMBED_URL" title="SEC Simplifier deck" allowfullscreen loading="lazy"></iframe>
-                   <figcaption>Project walkthrough deck.</figcaption>
-                 </figure>
-                 ===================================================================== -->
-            <div class="media-grid">
-
-              <div class="media-slot media-slot--wide">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="14" height="14" rx="2.5"/><path d="M16.5 10.5l5-3v9l-5-3z"/></svg>
-                <b>Demo video</b>
-                <span>A screen recording: question in, cited answer out, plus one &ldquo;not disclosed&rdquo; case.</span>
-                <code>media/sec-simplifier/demo.mp4</code>
+            <figure class="media media--app">
+              <div class="media--app__scroll">
+                <img src="media/sec-simplifier/footnote-app.png"
+                     alt="The Footnote web app: a risk-factors question about QURE answered with a written summary and three verified quotes from its 10-K filings"
+                     loading="lazy">
               </div>
-
-              <div class="media-slot">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"/><circle cx="8.5" cy="9.5" r="1.8"/><path d="M3.5 17l5-5 4.5 4.5 3-2.5 4.5 4"/></svg>
-                <b>Architecture diagram</b>
-                <span>Ingestion &rarr; chunking &rarr; index &rarr; hybrid retrieval &rarr; verification.</span>
-                <code>media/sec-simplifier/architecture.png</code>
-              </div>
-
-              <div class="media-slot">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V9M10 20V4M16 20v-8M22 20H2"/></svg>
-                <b>Eval results</b>
-                <span>A screenshot of the golden-set report or the baseline-tracking output.</span>
-                <code>media/sec-simplifier/eval.png</code>
-              </div>
-
-              <div class="media-slot media-slot--wide">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M12 16v4M8 20h8"/></svg>
-                <b>Slides</b>
-                <span>Publish a deck to the web and paste the embed URL here.</span>
-                <code>&lt;iframe src="..."&gt;</code>
-              </div>
-
-            </div>
+              <figcaption>
+                Footnote answering a risk-factors question, with each quote checked against
+                the cited 10-K before it&rsquo;s shown. Scroll inside the frame for the full answer.
+              </figcaption>
+            </figure>
           </div>
         </details>
       </article>
@@ -571,8 +529,6 @@
               easier to read and cleaned up its buttons. Small stuff, but the kind of thing people
               using it every day would notice.
             </p>
-
-            <!-- Optional: add a media-grid here, same pattern as above. -->
           </div>
         </details>
       </article>
@@ -601,17 +557,6 @@
               managers could dig into it themselves instead of seeing the numbers once in a slide.
             </p>
 
-            <!-- Slot removed on request. To bring it back, uncomment and drop a file at
-                 media/work/ford/ (anonymized dashboard screenshot or a chart of the three factors).
-            <div class="media-grid">
-              <div class="media-slot">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 21H3V3"/><path d="M7 15l4-5 3 3 5-7"/></svg>
-                <b>Ford dashboard</b>
-                <span>A screenshot of the conversion dashboard, or a chart of the three factors (anonymized).</span>
-                <code>media/work/ford/</code>
-              </div>
-            </div>
-            -->
           </div>
         </details>
       </article>
@@ -641,7 +586,7 @@
         </p>
         <p class="lede">
           And if you just want to chat, I&rsquo;d love to grab a coffee. I&rsquo;m in New York,
-          but a call works too. Reach out.
+          but a call works too. Reach out!
         </p>
       </div>
     </div>
