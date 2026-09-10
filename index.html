@@ -236,38 +236,13 @@
             <p>
               You ask a plain-English question about a US public company, and it answers using only
               that company&rsquo;s SEC filings. It pulls the filings from EDGAR on demand, chunks
-              them by section, and retrieves with a hybrid of keyword (BM25) and vector search.
-              There&rsquo;s no RAG framework under it; I wrote that part myself. Every answer links
-              to the filing it came from, and each quote is checked against the source text before
-              it&rsquo;s shown. If the filings don&rsquo;t cover the question, it says
-              <strong>&ldquo;not disclosed&rdquo;</strong> instead of guessing.
-            </p>
-
-            <p>
-              <strong>What I&rsquo;d rebuild.</strong> This was my first RAG system, and most of
-              what I got from it was seeing where these things actually break. Two I&rsquo;d do
-              differently:
-            </p>
-            <p>
-              <em>Measure correctness, not just the answer-or-abstain call.</em> My eval set
-              checked whether the system answered or held back when it should &mdash; never whether
-              the answer was right. I learned that the hard way: three separate retrieval changes
-              all scored identically, and a real bug sat undetected the whole time. Grade against
-              expected facts, and do it first, because everything else is guesswork until that lands.
-            </p>
-            <p>
-              <em>Fix tables at ingest, not at retrieval.</em> A financial table is columns of
-              digits and pipes, nothing like the sentences an embedding model is trained on, so it
-              retrieves badly against a plain-English question. I patched around it downstream and
-              lost precision elsewhere. The better move is to turn each table into a sentence at
-              chunk time &mdash; statement name, period, units, row labels as prose &mdash; so it
-              embeds like the question someone would ask.
-            </p>
-            <p>
-              Neither stops the app from working; it&rsquo;s the screenshot below. They&rsquo;re
-              what I&rsquo;d rebuild if I were staying with this, and I&rsquo;m not. It did its job
-              as a first RAG project, and I&rsquo;d rather take these lessons into the next thing
-              than ship a v2 here.
+              them so tables stay intact, and retrieves with a mix of keyword (BM25) and vector
+              search. There&rsquo;s no RAG framework under it; I wrote that part myself. Every answer
+              links to the filing it came from, and each quote is checked against the source text
+              before it&rsquo;s shown. If the filings don&rsquo;t cover the question, it says
+              <strong>&ldquo;not disclosed&rdquo;</strong> instead of guessing. I built an eval set
+              at the same time, and that&rsquo;s what caught a problem: the thresholds I&rsquo;d
+              tuned for when to abstain on one company didn&rsquo;t hold up on the next one.
             </p>
 
             <figure class="media media--app">
