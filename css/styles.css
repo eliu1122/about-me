@@ -270,11 +270,157 @@ h1, h2, h3, h4 {
 .media-slot code { font-family: var(--mono); font-size: .76rem; color: var(--mint); }
 .media-slot--wide { aspect-ratio: 16 / 7; grid-column: 1 / -1; }
 
+/* A slot that already points at a real file — shows the image once it loads, and falls
+   back to the same dashed placeholder as .media-slot if the file isn't there yet (main.js
+   adds .is-missing on the image's error event). Give it data-label/data-path and it's a
+   drop-in replacement for any single-image .media-slot. */
+.shot { margin: 0; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); background: var(--card); aspect-ratio: 16 / 10; }
+.shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.shot--wide { aspect-ratio: 16 / 7; grid-column: 1 / -1; }
+.shot--tall { aspect-ratio: 4 / 5; max-width: 300px; }
+
+.shot.is-missing {
+  border: 1.5px dashed var(--line-strong);
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 12px, var(--mint-wash) 12px, var(--mint-wash) 24px);
+  display: grid; place-content: center; align-content: center;
+  text-align: center; gap: .45rem; padding: 1.5rem; color: var(--muted);
+}
+.shot.is-missing img { display: none; }
+.shot.is-missing::before { content: attr(data-label); font-family: var(--display); font-size: 1rem; color: var(--ink-2); font-weight: 600; }
+.shot.is-missing::after { content: attr(data-path); font-family: var(--mono); font-size: .76rem; color: var(--mint); }
+
+/* ---------- Tilt card ----------
+   A device screenshot that leans toward the pointer in 3D — for images that already read
+   as a phone (a mockup drawn into the PNG itself, like FridayFlicks' Android screenshot),
+   so no extra CSS-drawn bezel is layered on top. main.js drives --rx/--ry/--shadow-x on
+   pointer move; this is just the geometry. Reuse it for any future "device" screenshot by
+   giving it the same two-level markup (figure.tilt-card > .tilt-card__inner > img). */
+.tilt-card {
+  --rx: 0deg; --ry: 0deg; --shadow-x: 0px; --shadow-y: 14px; --shadow-blur: 30px;
+  /* Matches the cropped phone image's own ratio (462x838) — object-fit: cover only
+     avoids clipping the phone's sides/ends if this tracks the source file's shape. */
+  margin: 0 auto; max-width: 240px; aspect-ratio: 462 / 838;
+  perspective: 1200px; position: relative;
+}
+.tilt-card__inner {
+  width: 100%; height: 100%; border-radius: 22px; overflow: hidden;
+  transform: rotateX(var(--rx)) rotateY(var(--ry));
+  transform-style: preserve-3d; will-change: transform;
+  box-shadow: var(--shadow-x) var(--shadow-y) var(--shadow-blur) -6px rgba(0, 0, 0, .38);
+  transition: transform .6s cubic-bezier(.2, .8, .2, 1), box-shadow .6s ease;
+}
+.tilt-card.is-tilting .tilt-card__inner { transition: transform .08s linear, box-shadow .08s linear; }
+.tilt-card__inner img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.tilt-card__hint {
+  position: absolute; inset: auto 0 -1.6rem 0; text-align: center;
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .06em; color: var(--faint);
+  opacity: 0; transition: opacity .3s ease;
+}
+.tilt-card:hover .tilt-card__hint { opacity: 1; }
+
+/* data-label/data-path live on the outer figure, so the placeholder's ::before/::after
+   (which read those via attr()) have to be attached here too, not on .tilt-card__inner. */
+.tilt-card.is-missing {
+  border-radius: 22px; border: 1.5px dashed var(--line-strong);
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 12px, var(--mint-wash) 12px, var(--mint-wash) 24px);
+  display: grid; place-content: center; text-align: center; padding: 1rem; gap: .4rem; color: var(--muted);
+}
+.tilt-card.is-missing .tilt-card__inner { display: none; }
+.tilt-card.is-missing::before { content: attr(data-label); font-family: var(--display); font-size: .95rem; color: var(--ink-2); font-weight: 600; }
+.tilt-card.is-missing::after { content: attr(data-path); font-family: var(--mono); font-size: .72rem; color: var(--mint); }
+.tilt-card.is-missing .tilt-card__hint { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tilt-card__hint { display: none; }
+}
+
 /* Swap .media-slot for .media once real media is dropped in (see README). */
 .media { margin: 0; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); background: var(--card); }
 .media img, .media video { width: 100%; height: auto; }
 .media--embed iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; }
+
 .media figcaption { font-size: .85rem; color: var(--muted); padding: .75rem 1rem; border-top: 1px solid var(--line); }
+
+/* A self-built card for the itch.io game link — cover image + title + byline we control,
+   rather than itch's auto-generated widget (see the comment above its markup). */
+.game-card {
+  display: flex; align-items: stretch; gap: 1rem; max-width: 420px;
+  text-decoration: none; color: var(--ink);
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  overflow: hidden; transition: border-color .2s, box-shadow .2s, transform .2s;
+}
+.game-card:hover { border-color: var(--mint-soft); box-shadow: var(--shadow-sm); transform: translateY(-2px); }
+.game-card img { width: 110px; flex: none; object-fit: cover; }
+.game-card__body { display: flex; flex-direction: column; gap: .3rem; padding: .9rem .9rem .9rem 0; min-width: 0; }
+.game-card__title { font-family: var(--display); font-weight: 700; font-size: 1.05rem; letter-spacing: -.01em; }
+.game-card__byline { font-size: .82rem; color: var(--muted); }
+.game-card__cta {
+  margin-top: auto; display: inline-flex; align-items: center; gap: .4rem;
+  font-size: .85rem; font-weight: 500; color: var(--mint);
+}
+.game-card__cta svg { width: 14px; height: 14px; transition: transform .2s ease; }
+.game-card:hover .game-card__cta svg { transform: translate(2px, -2px); }
+
+/* A recreation of the Portfolio Observability page — invented names/numbers, no screenshot.
+   The bar (portfolio name + actions), the tab strip, and each panel below it. */
+.obs {
+  margin: 1.5rem 0 0; max-width: 560px;
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  overflow: hidden;
+}
+.obs__bar {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: .75rem; padding: .9rem 1rem; border-bottom: 1px solid var(--line);
+}
+.obs__portfolio { display: flex; flex-direction: column; gap: .1rem; min-width: 0; }
+.obs__label { font-family: var(--mono); font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: var(--faint); }
+.obs__name { font-family: var(--display); font-weight: 600; font-size: .98rem; color: var(--ink); }
+.obs__actions { display: flex; gap: .5rem; flex: none; }
+
+.obs__btn {
+  display: inline-flex; align-items: center; gap: .4rem;
+  font-family: var(--body); font-size: .8rem; font-weight: 500; cursor: pointer;
+  padding: .4rem .75rem; border-radius: 999px; border: 1px solid var(--line-strong);
+  background: transparent; color: var(--ink-2); transition: border-color .2s, background .2s, color .2s;
+}
+.obs__btn:hover { border-color: var(--mint); color: var(--ink); }
+.obs__btn svg { width: 13px; height: 13px; transition: transform .5s ease; }
+.obs__btn.is-spinning svg { transform: rotate(360deg); }
+.obs__btn--primary { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.obs__btn--primary:hover { color: var(--paper); opacity: .88; }
+
+.obs__tabs { display: flex; gap: .25rem; padding: .5rem .6rem 0; border-bottom: 1px solid var(--line); overflow-x: auto; scrollbar-width: none; }
+.obs__tabs::-webkit-scrollbar { display: none; }
+.obs__tab {
+  font-family: var(--body); font-size: .84rem; font-weight: 500; cursor: pointer; white-space: nowrap;
+  padding: .55rem .8rem; border: 0; background: transparent; color: var(--muted);
+  border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color .2s, border-color .2s;
+}
+.obs__tab:hover { color: var(--ink-2); }
+.obs__tab.is-active { color: var(--ink); border-bottom-color: var(--mint); }
+
+.obs__panel { padding: 1.1rem 1rem 1.25rem; }
+.obs__stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.obs__stat { background: var(--card); padding: .85rem 1rem; }
+.obs__stat-n { display: block; font-family: var(--display); font-weight: 700; font-size: 1.15rem; letter-spacing: -.02em; }
+.obs__stat-l { display: block; font-size: .76rem; color: var(--muted); margin-top: .1rem; }
+
+.obs__panel table { width: 100%; border-collapse: collapse; font-size: .87rem; }
+.obs__panel th, .obs__panel td { text-align: left; padding: .55rem .3rem; }
+.obs__panel thead th {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--faint); border-bottom: 1px solid var(--line);
+}
+.obs__panel tbody tr + tr td { border-top: 1px solid var(--line); }
+.obs__panel tbody td:first-child { color: var(--ink-2); }
+.obs__panel tbody td:not(:first-child) { color: var(--muted); }
+.obs__more-row td { color: var(--faint); font-style: italic; }
+
+.obs__caption { font-size: .78rem; color: var(--muted); padding: .8rem 1rem; border-top: 1px solid var(--line); }
+
+@media (prefers-reduced-motion: reduce) {
+  .obs__btn.is-spinning svg { transform: none; }
+}
 
 /* ---------- Work timeline ---------- */
 

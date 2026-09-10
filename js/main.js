@@ -115,13 +115,106 @@
   window.addEventListener('hashchange', function () { openPanel(window.location.hash); });
   openPanel(window.location.hash);
 
-  /* ---------- Portrait: fall back to a labeled placeholder until the file exists ---------- */
-  var portrait = document.querySelector('.portrait img');
-  if (portrait) {
-    var markMissing = function () { portrait.parentNode.classList.add('is-missing'); };
-    portrait.addEventListener('error', markMissing);
-    if (portrait.complete && portrait.naturalWidth === 0) markMissing();
+  /* ---------- Images: fall back to a labeled placeholder until the file exists ----------
+     Applies to the portrait, every .shot, and every .tilt-card (e.g. the FridayFlicks
+     screenshot) — add more of any of these and they get this for free, no JS changes needed. */
+  var watchForMissingImage = function (img) {
+    var container = img.closest('.portrait, .shot, .tilt-card') || img.parentNode;
+    var markMissing = function () { container.classList.add('is-missing'); };
+    img.addEventListener('error', markMissing);
+    if (img.complete && img.naturalWidth === 0) markMissing();
+  };
+  document.querySelectorAll('.portrait img, .shot img, .tilt-card img').forEach(watchForMissingImage);
+
+  /* ---------- Tilt cards: lean toward the pointer in 3D ----------
+     Continuous follow on mouse (no need to click first, same feel as the usual
+     "tilt.js"-style device mockups); press-and-drag on touch, since touch has no hover.
+     Skipped entirely for prefers-reduced-motion, not just eased differently. */
+  var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReducedMotion) {
+    var MAX_TILT_DEG = 14;
+
+    var applyTilt = function (card, clientX, clientY) {
+      var rect = card.getBoundingClientRect();
+      var px = (clientX - rect.left) / rect.width;   // 0..1 across the card
+      var py = (clientY - rect.top) / rect.height;   // 0..1 down the card
+      px = Math.min(1, Math.max(0, px));
+      py = Math.min(1, Math.max(0, py));
+
+      var ry = (px - 0.5) * 2 * MAX_TILT_DEG;   // left/right tilt
+      var rx = (0.5 - py) * 2 * MAX_TILT_DEG;   // up/down tilt
+      var shadowX = (px - 0.5) * -36;
+      var shadowBlur = 26 + Math.abs(px - 0.5) * 24;
+
+      card.style.setProperty('--rx', rx.toFixed(2) + 'deg');
+      card.style.setProperty('--ry', ry.toFixed(2) + 'deg');
+      card.style.setProperty('--shadow-x', shadowX.toFixed(1) + 'px');
+      card.style.setProperty('--shadow-blur', shadowBlur.toFixed(1) + 'px');
+    };
+
+    var resetTilt = function (card) {
+      card.style.setProperty('--rx', '0deg');
+      card.style.setProperty('--ry', '0deg');
+      card.style.setProperty('--shadow-x', '0px');
+      card.style.setProperty('--shadow-blur', '30px');
+    };
+
+    document.querySelectorAll('.tilt-card').forEach(function (card) {
+      // Mouse: follow continuously while hovering.
+      card.addEventListener('mouseenter', function () { card.classList.add('is-tilting'); });
+      card.addEventListener('mousemove', function (e) { applyTilt(card, e.clientX, e.clientY); });
+      card.addEventListener('mouseleave', function () {
+        card.classList.remove('is-tilting');
+        resetTilt(card);
+      });
+
+      // Touch: only while a finger is actually down and dragging on the card.
+      card.addEventListener('touchstart', function () { card.classList.add('is-tilting'); }, { passive: true });
+      card.addEventListener('touchmove', function (e) {
+        var t = e.touches[0];
+        if (t) applyTilt(card, t.clientX, t.clientY);
+      }, { passive: true });
+      card.addEventListener('touchend', function () {
+        card.classList.remove('is-tilting');
+        resetTilt(card);
+      });
+    });
   }
+
+  /* ---------- Portfolio Observability mock: working tabs + fake reload ----------
+     It's a recreation with invented data, but the tabs and buttons behave like the
+     real page so it reads as a UI, not a screenshot. */
+  document.querySelectorAll('.obs').forEach(function (obs) {
+    var tabs = obs.querySelectorAll('.obs__tab');
+    var panels = obs.querySelectorAll('.obs__panel');
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        var name = tab.getAttribute('data-obs-tab');
+        tabs.forEach(function (t) {
+          var on = t === tab;
+          t.classList.toggle('is-active', on);
+          t.setAttribute('aria-selected', String(on));
+        });
+        panels.forEach(function (p) {
+          p.hidden = p.getAttribute('data-obs-panel') !== name;
+        });
+      });
+    });
+
+    obs.querySelectorAll('[data-obs-action]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        if (btn.classList.contains('is-spinning')) return;
+        btn.classList.add('is-spinning');
+        var stamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        window.setTimeout(function () {
+          btn.classList.remove('is-spinning');
+          obs.querySelectorAll('.obs__updated-value').forEach(function (el) { el.textContent = stamp; });
+        }, 650);
+      });
+    });
+  });
 
   /* ---------- Footer year ---------- */
   var year = document.getElementById('year');

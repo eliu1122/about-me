@@ -26,7 +26,7 @@ crop looks best. To change what the frame keeps, edit `object-position: center 2
 | `sec-simplifier/demo.mp4` | Demo screen recording. Optional poster frame: `demo-poster.png`. |
 | `sec-simplifier/architecture.png` | Pipeline diagram. |
 | `sec-simplifier/eval.png` | Golden-set / baseline-tracking screenshot. |
-| `fridayflicks/` | App screenshots or a short clip. Name files whatever you like. |
+| `fridayflicks.png` | An app screenshot — wired up like `profile.jpg`, appears automatically. |
 | `bear-run/gameplay.mp4` | A clip of a run, or the title screen. |
 | `work/morningstar/` | Publicly shareable screens or diagrams. |
 | `work/ford/` | Conversion dashboard screenshot or chart. |
