@@ -98,7 +98,7 @@
       </ul>
 
       <div class="actions">
-        <a class="btn btn--primary" href="#projects" data-open="sec-simplifier">
+        <a class="btn btn--primary" href="#projects" data-open="lesson-pipeline">
           See what I&rsquo;m building
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
@@ -210,6 +210,52 @@
     </div>
 
     <div class="timeline timeline--projects">
+
+      <article class="job reveal">
+        <div class="job__when">
+          <b>Independent</b>
+          Current project
+          <span class="status"><span class="pulse"></span>In progress</span>
+        </div>
+
+        <details class="job__body" id="lesson-pipeline">
+          <summary class="job__summary">
+            <span class="job__titles">
+              <h3>Lesson video pipeline</h3>
+              <span class="job__role">JSON storyboards into narrated lesson videos</span>
+            </span>
+            <span class="job__more"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+
+          <div class="job__detail">
+            <ul class="tags">
+              <li>Python</li><li>TypeScript</li><li>JSON Schema</li><li>Manim</li><li>FFmpeg</li><li>Docker</li><li>AWS Polly</li>
+            </ul>
+
+            <p>
+              It turns a structured lesson plan into a narrated educational video: animated math,
+              graphs, and diagrams, with synchronized captions and transcripts, all rendered
+              automatically from a JSON storyboard.
+            </p>
+
+            <p>
+              The constraint that shaped the whole thing is determinism. The same input has to
+              produce the same video every time. So one JSON Schema generates both the Python and
+              TypeScript type definitions rather than me keeping two sets in sync by hand, the
+              layout engine rejects content that won&rsquo;t fit on screen before rendering instead
+              of after, and the renderer runs in Docker with networking disabled. Manim and FFmpeg
+              do the rendering. Narration comes from AWS Polly, and caption timing is driven by the
+              measured length of the audio, so it never drifts.
+            </p>
+
+            <p>
+              I&rsquo;m building the front half now: going from a plain-language topic straight to a
+              validated storyboard, so the whole thing runs end to end from a single prompt. The
+              other thing I&rsquo;m working on is bringing down the cost per video.
+            </p>
+          </div>
+        </details>
+      </article>
 
       <article class="job reveal">
         <div class="job__when">
