@@ -234,25 +234,17 @@
             </ul>
 
             <p>
-              It turns a structured lesson plan into a narrated educational video: animated math,
-              graphs, and diagrams, with synchronized captions and transcripts, all rendered
-              automatically from a JSON storyboard.
+              It turns a JSON storyboard into a narrated lesson video: animated math, graphs, and
+              diagrams with synchronized captions. The constraint that shaped it is determinism, so
+              the same input always produces the same video. One JSON Schema generates both the
+              Python and TypeScript types, the layout engine rejects content that won&rsquo;t fit
+              before rendering rather than after, and the renderer runs in Docker with networking
+              off. Caption timing comes from measured audio length, so it never drifts.
             </p>
 
             <p>
-              The constraint that shaped the whole thing is determinism. The same input has to
-              produce the same video every time. So one JSON Schema generates both the Python and
-              TypeScript type definitions rather than me keeping two sets in sync by hand, the
-              layout engine rejects content that won&rsquo;t fit on screen before rendering instead
-              of after, and the renderer runs in Docker with networking disabled. Manim and FFmpeg
-              do the rendering. Narration comes from AWS Polly, and caption timing is driven by the
-              measured length of the audio, so it never drifts.
-            </p>
-
-            <p>
-              I&rsquo;m building the front half now: going from a plain-language topic straight to a
-              validated storyboard, so the whole thing runs end to end from a single prompt. The
-              other thing I&rsquo;m working on is bringing down the cost per video.
+              I&rsquo;m building the front half now, plain-language topic to validated storyboard,
+              and bringing down the cost per video.
             </p>
           </div>
         </details>
@@ -279,15 +271,13 @@
             </ul>
 
             <p>
-              You ask a plain-English question about a US public company, and it answers using only
-              that company&rsquo;s SEC filings. It pulls the filings from EDGAR on demand, chunks
-              them so tables stay intact, and retrieves with a mix of keyword (BM25) and vector
-              search. There&rsquo;s no RAG framework under it; I wrote that part myself. Every answer
-              links to the filing it came from, and each quote is checked against the source text
-              before it&rsquo;s shown. If the filings don&rsquo;t cover the question, it says
-              <strong>&ldquo;not disclosed&rdquo;</strong> instead of guessing. I built an eval set
-              at the same time, and that&rsquo;s what caught a problem: the thresholds I&rsquo;d
-              tuned for when to abstain on one company didn&rsquo;t hold up on the next one.
+              Ask a plain-English question about any US public company and get an answer built only
+              from its SEC filings. It pulls filings from EDGAR on demand and retrieves with a
+              hand-rolled mix of BM25 and vector search, no RAG framework underneath. Every quote is
+              checked against the source before it&rsquo;s shown, and if the filings don&rsquo;t
+              cover the question it says <strong>&ldquo;not disclosed&rdquo;</strong> instead of
+              guessing. The eval set I built alongside it is what caught my abstention thresholds
+              failing to generalize across companies.
             </p>
 
             <a class="repo-link" href="https://github.com/eliu1122/sec-simplifier" target="_blank" rel="noopener">

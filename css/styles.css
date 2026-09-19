@@ -222,10 +222,13 @@ h1, h2, h3, h4 {
 .status .pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--mint); animation: pulse 2.4s ease-in-out infinite; }
 @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .35; transform: scale(.8); } }
 
-.tags { display: flex; flex-wrap: wrap; gap: .4rem; list-style: none; padding: 0; margin: 1.4rem 0 0; }
+.tags { display: flex; flex-wrap: wrap; gap: .45rem; list-style: none; padding: 0; margin: 1.4rem 0 0; }
+/* The stack is a headline fact on a portfolio, so these read as solid chips rather than
+   faint outlines: filled against the section ground, darker text, firmer border. */
 .tags li {
-  font-family: var(--mono); font-size: .75rem; color: var(--muted);
-  border: 1px solid var(--line); border-radius: 6px; padding: .22rem .55rem;
+  font-family: var(--mono); font-size: .78rem; color: var(--ink-2);
+  background: var(--card);
+  border: 1px solid var(--line-strong); border-radius: 7px; padding: .3rem .62rem;
 }
 
 .prose { max-width: 68ch; }
