@@ -624,14 +624,17 @@ details[open] .job__more svg { transform: rotate(180deg); }
 
 /* ---------- Portrait ---------- */
 
-/* nowrap on purpose: with wrapping on, the photo dropped above the heading whenever the
-   intro column got narrower than portrait + gap + the text's flex basis, which happens
-   through the whole 900-1050px band. The text shrinks to fit instead. */
-.contact__intro { display: flex; flex-wrap: nowrap; gap: clamp(1rem, 2.5vw, 1.75rem); align-items: flex-start; }
-.contact__intro > div { flex: 1 1 auto; min-width: 0; }
+/* The portrait floats rather than sitting in a flex row. As a flex item it was only ~140px
+   tall but held the text column to its narrow width for the full height, leaving a dead
+   gutter under the photo and squeezing the prose to ~25 characters a line on a phone.
+   Floated, the heading and opening lines sit beside it and the rest runs full width.
+   flow-root so the float stays inside the section. */
+.contact__intro { display: flow-root; }
+.contact__intro > div { min-width: 0; }
 
 .portrait {
-  margin: 0; flex: none; width: clamp(112px, 14vw, 170px); aspect-ratio: 4 / 5;
+  float: left; margin: .3rem clamp(1rem, 2.5vw, 1.5rem) .6rem 0;
+  width: clamp(104px, 13vw, 168px); aspect-ratio: 4 / 5;
   border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
   background: var(--card); box-shadow: var(--shadow-sm);
 }
