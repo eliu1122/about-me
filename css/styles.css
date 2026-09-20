@@ -624,11 +624,14 @@ details[open] .job__more svg { transform: rotate(180deg); }
 
 /* ---------- Portrait ---------- */
 
-.contact__intro { display: flex; flex-wrap: wrap; gap: clamp(1.25rem, 3vw, 2rem); align-items: flex-start; }
-.contact__intro > div { flex: 1 1 260px; min-width: 0; }
+/* nowrap on purpose: with wrapping on, the photo dropped above the heading whenever the
+   intro column got narrower than portrait + gap + the text's flex basis, which happens
+   through the whole 900-1050px band. The text shrinks to fit instead. */
+.contact__intro { display: flex; flex-wrap: nowrap; gap: clamp(1rem, 2.5vw, 1.75rem); align-items: flex-start; }
+.contact__intro > div { flex: 1 1 auto; min-width: 0; }
 
 .portrait {
-  margin: 0; flex: none; width: clamp(150px, 20vw, 190px); aspect-ratio: 4 / 5;
+  margin: 0; flex: none; width: clamp(112px, 14vw, 170px); aspect-ratio: 4 / 5;
   border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
   background: var(--card); box-shadow: var(--shadow-sm);
 }
