@@ -23,7 +23,7 @@ best. To change what it keeps, edit `object-position: center 22%` in `.portrait 
 | `profile.jpg` | Contact section portrait. |
 | `fridayflicks.png` | FridayFlicks project — the tilting phone screenshot. |
 | `sec-simplifier/footnote-app.png` | Footnote project — the app screenshot in its scrollable frame. |
-| `eric-liu-resume.pdf` | Résumé link in Contact (add the file; the link already points at it). |
+| `Yun_Chung_(Eric)_Liu_Resume.pdf` | Résumé link in Contact. |
 
 ## Optional
 
