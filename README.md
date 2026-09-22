@@ -1,5 +1,7 @@
 # Yun-Chung (Eric) Liu — personal site
 
+Live at **[liu-eric.com](https://liu-eric.com)**, deployed from `main` via GitHub Pages.
+
 Static site. No build step, no dependencies. Open `index.html` in a browser, or serve it:
 
 ```bash
@@ -18,8 +20,8 @@ python -m http.server 8000
 
 ## Adding media
 
-Every empty box on the page is a `.media-slot`. Each one has an HTML comment
-directly above it showing exactly what to paste in its place. The three forms:
+The empty placeholder slots are gone; every media box on the page now holds a real
+file. To add another, drop the file in `media/` and paste one of these where you want it:
 
 **Image**
 ```html
