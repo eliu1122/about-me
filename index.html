@@ -223,7 +223,7 @@
           <summary class="job__summary">
             <span class="job__titles">
               <h3>Manim Lesson Builder</h3>
-              <span class="job__role">JSON storyboards into narrated lesson videos</span>
+              <span class="job__role">Plain-language topics into narrated lesson videos</span>
             </span>
             <span class="job__more"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
           </summary>
@@ -234,18 +234,39 @@
             </ul>
 
             <p>
-              It turns a JSON storyboard into a narrated lesson video: animated math, graphs, and
-              diagrams with synchronized captions. The constraint that shaped it is determinism, so
-              the same input always produces the same video. One JSON Schema generates both the
+              It turns a plain-language topic into a narrated lesson video: animated math, graphs,
+              and diagrams with synchronized captions. The constraint that shaped it is determinism,
+              so the same input always produces the same video. One JSON Schema generates both the
               Python and TypeScript types, the layout engine rejects content that won&rsquo;t fit
               before rendering rather than after, and the renderer runs in Docker with networking
               off. Caption timing comes from measured audio length, so it never drifts.
             </p>
 
             <p>
-              I&rsquo;m building the front half now, plain-language topic to validated storyboard,
-              and bringing down the cost per video.
+              The planner is a repair loop rather than a single prompt. Every generated storyboard is
+              validated against the same rules the renderer enforces, and each failure goes back to
+              the model as a specific measurement &mdash; which field, which limit, by how much.
+              That&rsquo;s what makes a mid-tier open-weight model reliable against a contract with
+              this many interlocking constraints.
             </p>
+
+            <p>
+              A three-minute lesson costs about eight cents, nearly all of it text-to-speech.
+              Generative video models run $18 to $135 for the same length, though none of them can
+              render a correct equation.
+            </p>
+
+            <figure class="media">
+              <video src="media/manim-lesson-builder/lesson.mp4"
+                     poster="media/manim-lesson-builder/poster.jpg"
+                     width="854" height="480"
+                     controls playsinline preload="none"></video>
+              <figcaption>
+                A lesson generated end to end from a plain-language topic, 2:48 long. The captions
+                are timed from the measured audio rather than estimated, so they hold sync
+                throughout.
+              </figcaption>
+            </figure>
           </div>
         </details>
       </article>
