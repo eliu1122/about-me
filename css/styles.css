@@ -318,6 +318,11 @@ h1, h2, h3, h4 {
 
 .media figcaption { font-size: .85rem; color: var(--muted); padding: .75rem 1rem; border-top: 1px solid var(--line); }
 
+/* .media ships with margin: 0, so a figure sitting straight after a paragraph picked up only
+   the paragraph's own bottom margin and read as part of it. Matches the gap `.repo-link + *`
+   already gives the Footnote screenshot. */
+.job__detail .media { margin-top: 1.75rem; }
+
 /* A self-built card for the itch.io game link — cover image + title + byline we control,
    rather than itch's auto-generated widget (see the comment above its markup). */
 .game-card {
