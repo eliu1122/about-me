@@ -488,79 +488,88 @@
                  the tabs and buttons are wired up (see .obs in main.js) so it actually behaves
                  like the real page, just with fictional content. -->
             <figure class="obs" data-updated="Just now">
-              <div class="obs__tag">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
-                Recreation &middot; layout only, no real data
-              </div>
-              <div class="obs__bar">
-                <div class="obs__portfolio">
-                  <span class="obs__label">Portfolio</span>
-                  <span class="obs__name">Global Equity Leaders Index</span>
+              <p class="obs__hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 9l5 12 1.8-5.2L21 14Z"/><path d="M7.2 2.2 8 5.1M2.2 7.2l2.9.8M14.1 4.9 12 7M4.9 14.1 7 12"/></svg>
+                Interactive recreation &middot; try the tabs
+              </p>
+              <div class="obs__window">
+                <div class="obs__chrome" aria-hidden="true">
+                  <span class="obs__dots"><i></i><i></i><i></i></span>
+                  <span class="obs__url">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+                    portfolio-observability / global-equity-leaders
+                  </span>
                 </div>
-                <div class="obs__actions">
-                  <button class="obs__btn" type="button" data-obs-action="reload">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8M21 3v5h-5M21 12a9 9 0 0 1-15 6.7L3 16m0 5v-5h5"/></svg>
-                    Reload
-                  </button>
-                  <button class="obs__btn obs__btn--primary" type="button" data-obs-action="recalculate">Recalculate</button>
+                <div class="obs__bar">
+                  <div class="obs__portfolio">
+                    <span class="obs__label">Portfolio</span>
+                    <span class="obs__name">Global Equity Leaders Index</span>
+                  </div>
+                  <div class="obs__actions">
+                    <button class="obs__btn" type="button" data-obs-action="reload">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8M21 3v5h-5M21 12a9 9 0 0 1-15 6.7L3 16m0 5v-5h5"/></svg>
+                      Reload
+                    </button>
+                    <button class="obs__btn obs__btn--primary" type="button" data-obs-action="recalculate">Recalculate</button>
+                  </div>
                 </div>
-              </div>
 
-              <div class="obs__tabs" role="tablist">
-                <button class="obs__tab is-active" type="button" role="tab" aria-selected="true" data-obs-tab="portfolio">Portfolio</button>
-                <button class="obs__tab" type="button" role="tab" aria-selected="false" data-obs-tab="constituents">Constituents</button>
-                <button class="obs__tab" type="button" role="tab" aria-selected="false" data-obs-tab="hedge">Hedge</button>
-                <button class="obs__tab" type="button" role="tab" aria-selected="false" data-obs-tab="fx">FX Rates</button>
-              </div>
-
-              <div class="obs__panel" data-obs-panel="portfolio">
-                <div class="obs__stats">
-                  <div class="obs__stat"><span class="obs__stat-n">87</span><span class="obs__stat-l">Constituents</span></div>
-                  <div class="obs__stat"><span class="obs__stat-n">USD</span><span class="obs__stat-l">Base currency</span></div>
-                  <div class="obs__stat"><span class="obs__stat-n">Net TR</span><span class="obs__stat-l">Index variant</span></div>
-                  <div class="obs__stat"><span class="obs__stat-n obs__updated-value">Just now</span><span class="obs__stat-l">Last recalculated</span></div>
+                <div class="obs__tabs" role="tablist">
+                  <button class="obs__tab is-active" type="button" role="tab" aria-selected="true" data-obs-tab="portfolio">Portfolio</button>
+                  <button class="obs__tab" type="button" role="tab" aria-selected="false" data-obs-tab="constituents">Constituents</button>
+                  <button class="obs__tab" type="button" role="tab" aria-selected="false" data-obs-tab="hedge">Hedge</button>
+                  <button class="obs__tab" type="button" role="tab" aria-selected="false" data-obs-tab="fx">FX Rates</button>
                 </div>
-              </div>
 
-              <div class="obs__panel" data-obs-panel="constituents" hidden>
-                <table>
-                  <thead><tr><th>Constituent</th><th>Weight</th><th>Sector</th></tr></thead>
-                  <tbody>
-                    <tr><td>Alpha Industries</td><td>4.8%</td><td>Technology</td></tr>
-                    <tr><td>Beta Materials Co.</td><td>3.2%</td><td>Materials</td></tr>
-                    <tr><td>Gamma Robotics</td><td>2.9%</td><td>Industrials</td></tr>
-                    <tr><td>Delta Consumer Group</td><td>2.4%</td><td>Consumer</td></tr>
-                    <tr class="obs__more-row"><td colspan="3">+ 83 more</td></tr>
-                  </tbody>
-                </table>
-              </div>
+                <div class="obs__panel" data-obs-panel="portfolio">
+                  <div class="obs__stats">
+                    <div class="obs__stat"><span class="obs__stat-n">87</span><span class="obs__stat-l">Constituents</span></div>
+                    <div class="obs__stat"><span class="obs__stat-n">USD</span><span class="obs__stat-l">Base currency</span></div>
+                    <div class="obs__stat"><span class="obs__stat-n">Net TR</span><span class="obs__stat-l">Index variant</span></div>
+                    <div class="obs__stat"><span class="obs__stat-n obs__updated-value">Just now</span><span class="obs__stat-l">Last recalculated</span></div>
+                  </div>
+                </div>
 
-              <div class="obs__panel" data-obs-panel="hedge" hidden>
-                <table>
-                  <thead><tr><th>Exposure</th><th>Hedge ratio</th><th>Instrument</th></tr></thead>
-                  <tbody>
-                    <tr><td>EUR / USD</td><td>98.5%</td><td>FX Forward</td></tr>
-                    <tr><td>GBP / USD</td><td>97.1%</td><td>FX Forward</td></tr>
-                    <tr><td>JPY / USD</td><td>95.4%</td><td>FX Forward</td></tr>
-                  </tbody>
-                </table>
-              </div>
+                <div class="obs__panel" data-obs-panel="constituents" hidden>
+                  <table>
+                    <thead><tr><th>Constituent</th><th>Weight</th><th>Sector</th></tr></thead>
+                    <tbody>
+                      <tr><td>Alpha Industries</td><td>4.8%</td><td>Technology</td></tr>
+                      <tr><td>Beta Materials Co.</td><td>3.2%</td><td>Materials</td></tr>
+                      <tr><td>Gamma Robotics</td><td>2.9%</td><td>Industrials</td></tr>
+                      <tr><td>Delta Consumer Group</td><td>2.4%</td><td>Consumer</td></tr>
+                      <tr class="obs__more-row"><td colspan="3">+ 83 more</td></tr>
+                    </tbody>
+                  </table>
+                </div>
 
-              <div class="obs__panel" data-obs-panel="fx" hidden>
-                <table>
-                  <thead><tr><th>Pair</th><th>Rate</th><th>As of</th></tr></thead>
-                  <tbody>
-                    <tr><td>EUR / USD</td><td>1.0842</td><td class="obs__updated-value">Just now</td></tr>
-                    <tr><td>GBP / USD</td><td>1.2657</td><td class="obs__updated-value">Just now</td></tr>
-                    <tr><td>JPY / USD</td><td>149.32</td><td class="obs__updated-value">Just now</td></tr>
-                  </tbody>
-                </table>
-              </div>
+                <div class="obs__panel" data-obs-panel="hedge" hidden>
+                  <table>
+                    <thead><tr><th>Exposure</th><th>Hedge ratio</th><th>Instrument</th></tr></thead>
+                    <tbody>
+                      <tr><td>EUR / USD</td><td>98.5%</td><td>FX Forward</td></tr>
+                      <tr><td>GBP / USD</td><td>97.1%</td><td>FX Forward</td></tr>
+                      <tr><td>JPY / USD</td><td>95.4%</td><td>FX Forward</td></tr>
+                    </tbody>
+                  </table>
+                </div>
 
+                <div class="obs__panel" data-obs-panel="fx" hidden>
+                  <table>
+                    <thead><tr><th>Pair</th><th>Rate</th><th>As of</th></tr></thead>
+                    <tbody>
+                      <tr><td>EUR / USD</td><td>1.0842</td><td class="obs__updated-value">Just now</td></tr>
+                      <tr><td>GBP / USD</td><td>1.2657</td><td class="obs__updated-value">Just now</td></tr>
+                      <tr><td>JPY / USD</td><td>149.32</td><td class="obs__updated-value">Just now</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+              </div>
               <figcaption class="obs__caption">
                 A replication of the <strong>Portfolio Observability</strong> page above, rebuilt
-                from memory &mdash; same layout, tabs, and controls. The tabs and buttons work,
-                the data doesn&rsquo;t.
+                from memory &mdash; same layout, tabs, and controls. The tabs and buttons work;
+                every name and number is invented.
               </figcaption>
             </figure>
           </div>
