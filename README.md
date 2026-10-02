@@ -1,6 +1,6 @@
 # Yun-Chung (Eric) Liu — personal site
 
-Software engineer & product builder at Cornell Tech, previously three years at Morningstar. Looking for Summer 2027 internships in forward-deployed engineering, AI product/product management, and software engineering.
+Software engineer & product builder at Cornell Tech, previously three years at Morningstar. Looking for Summer 2027 internships in AI solutions, forward-deployed engineering, AI product/product management, and software engineering.
 
 Live at **[liu-eric.com](https://liu-eric.com)**, deployed from `main` via GitHub Pages.
 
