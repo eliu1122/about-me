@@ -47,12 +47,20 @@
     });
   }
 
-  /* ---------- Hairline under the nav once the page scrolls ---------- */
+  /* ---------- Hairline and progress line under the nav as the page scrolls ---------- */
   var nav = document.getElementById('nav');
+  var navProgress = document.getElementById('navProgress');
   var onScroll = function () {
     if (nav) nav.classList.toggle('is-stuck', window.scrollY > 8);
+    if (navProgress) {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      navProgress.style.transform = 'scaleX(' + (max > 0 ? Math.min(window.scrollY / max, 1) : 1) + ')';
+    }
   };
   window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  // Opening a project panel changes the page height without scrolling.
+  if ('ResizeObserver' in window) new ResizeObserver(onScroll).observe(document.body);
   onScroll();
 
   /* ---------- Reveal on scroll ---------- */

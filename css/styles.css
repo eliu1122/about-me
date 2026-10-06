@@ -128,6 +128,11 @@ h1, h2, h3, h4 {
   transition: border-color .25s ease;
 }
 .nav.is-stuck { border-bottom-color: var(--line); }
+/* Fills left to right as the page scrolls, so it's clear there's more below. */
+.nav__progress {
+  position: absolute; left: 0; right: 0; bottom: -1px; height: 2px;
+  background: var(--mint); transform-origin: left; transform: scaleX(0);
+}
 .nav__inner { display: flex; align-items: center; gap: 1.5rem; height: 72px; }
 
 .brand {
