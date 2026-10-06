@@ -65,6 +65,16 @@
   if ('ResizeObserver' in window) new ResizeObserver(onScroll).observe(document.body);
   onScroll();
 
+  // Show the progress line while scrolling, and hide it shortly after scrolling stops.
+  var progressTimer;
+  if (navProgress) {
+    window.addEventListener('scroll', function () {
+      navProgress.classList.add('is-scrolling');
+      clearTimeout(progressTimer);
+      progressTimer = setTimeout(function () { navProgress.classList.remove('is-scrolling'); }, 900);
+    }, { passive: true });
+  }
+
   /* ---------- Reveal on scroll ---------- */
   var reveals = document.querySelectorAll('.reveal');
 

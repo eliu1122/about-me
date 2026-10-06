@@ -128,11 +128,15 @@ h1, h2, h3, h4 {
   transition: border-color .25s ease;
 }
 .nav.is-stuck { border-bottom-color: var(--line); }
-/* Fills left to right as the page scrolls, so it's clear there's more below. */
+/* Fills left to right as the page scrolls, so it's clear there's more below.
+   Only shown while scrolling: it fades in quickly and lingers before fading out. */
 .nav__progress {
   position: absolute; left: 0; right: 0; bottom: -1px; height: 2px;
-  background: var(--mint); transform-origin: left; transform: scaleX(0);
+  background: color-mix(in srgb, var(--mint) 45%, transparent);
+  transform-origin: left; transform: scaleX(0);
+  opacity: 0; transition: opacity .6s ease;
 }
+.nav__progress.is-scrolling { opacity: 1; transition-duration: .15s; }
 .nav__inner { display: flex; align-items: center; gap: 1.5rem; height: 72px; }
 
 .brand {
