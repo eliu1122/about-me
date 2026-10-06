@@ -198,6 +198,21 @@ h1, h2, h3, h4 {
 .seeking b { color: var(--ink); font-weight: 600; }
 
 .actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.6rem; }
+
+/* Pinned to the bottom of the first screen; fades out on the first scroll. */
+.scroll-cue {
+  position: fixed; left: 50%; bottom: 1.25rem; z-index: 40; transform: translateX(-50%);
+  display: flex; align-items: center; gap: .35rem; padding: .4rem .85rem;
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--muted); text-decoration: none; border-radius: 999px;
+  background: color-mix(in srgb, var(--paper) 82%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  transition: opacity .3s ease, visibility .3s;
+}
+.scroll-cue:hover { color: var(--ink); }
+.scroll-cue svg { width: 14px; height: 14px; animation: cue-drift 1.8s ease-in-out infinite; }
+.scroll-cue.is-hidden { opacity: 0; visibility: hidden; }
+@keyframes cue-drift { 50% { transform: translateY(3px); } }
 .btn {
   display: inline-flex; align-items: center; gap: .5rem;
   font-family: var(--body); font-size: .95rem; font-weight: 500; text-decoration: none;
