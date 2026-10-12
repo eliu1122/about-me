@@ -240,14 +240,24 @@
             </ul>
 
             <p>
-              Turns a topic into animated math, graphs, and diagrams with narration and synced captions.
-              A shared schema, layout checks, and an isolated renderer keep outputs consistent.
+              It turns a plain-language topic into a narrated lesson video: animated math, graphs,
+              and diagrams with synchronized captions. It is built to be deterministic, so the same
+              input always produces the same video. One JSON Schema generates both the Python and
+              TypeScript types, the layout engine rejects content that won&rsquo;t fit before
+              rendering, and the renderer runs in Docker with networking off.
             </p>
 
             <p>
-              The planner validates each storyboard and feeds precise errors back to the model
-              for repair. A three-minute lesson costs <strong>about eight cents</strong>,
-              mostly text-to-speech.
+              The planner is a repair loop rather than a single prompt. Each storyboard is validated
+              against the rules the renderer enforces, and every failure goes back to the model as a
+              specific measurement &mdash; which field, which limit, by how much. That&rsquo;s what
+              makes a mid-tier open-weight model reliable here.
+            </p>
+
+            <p>
+              A three-minute lesson costs <strong>about eight cents</strong>, nearly all of it
+              text-to-speech. Generative video models run <strong>$18 to $135</strong> for the same
+              length, and none of them can render a correct equation.
             </p>
 
             <figure class="media">
@@ -256,7 +266,8 @@
                      width="1920" height="1080"
                      controls playsinline preload="none"></video>
               <figcaption>
-                Generated from a topic in plain language. 2:31, with audio-timed captions.
+                Generated end to end from a plain-language topic, 2:31 long. Captions are timed
+                from the measured audio, so they hold sync throughout.
               </figcaption>
             </figure>
           </div>
