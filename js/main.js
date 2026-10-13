@@ -218,12 +218,12 @@
     });
   });
 
-  /* ---------- Video tabs: one player, several clips ----------
-     Each .media__tab carries a data-src/data-poster pair; clicking one points the
+  /* ---------- Video playlist: one player, several clips ----------
+     Each .media__item carries a data-src/data-poster pair; clicking one points the
      figure's <video> at it. Switching stops playback and shows the new poster. */
-  document.querySelectorAll('.media__tabs').forEach(function (bar) {
+  document.querySelectorAll('.media__list').forEach(function (bar) {
     var video = bar.parentNode.querySelector('video');
-    var tabs = bar.querySelectorAll('.media__tab');
+    var tabs = bar.querySelectorAll('.media__item');
     if (!video) return;
 
     tabs.forEach(function (tab) {

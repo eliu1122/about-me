@@ -268,21 +268,33 @@
               length, and none of them can render a correct equation.
             </p>
 
-            <!-- The tabs swap the one <video>'s src/poster (see .media__tab in main.js), so only
-                 the lesson being watched is ever downloaded. -->
+            <!-- A playlist under the player: each thumbnail swaps the one <video>'s src/poster
+                 (see .media__item in main.js), so only the lesson being watched is downloaded. -->
             <figure class="media">
-              <div class="media__tabs" role="group" aria-label="Choose a lesson">
-                <button class="media__tab is-active" type="button" aria-pressed="true"
-                        data-src="media/manim-lesson-builder/lesson.mp4"
-                        data-poster="media/manim-lesson-builder/poster.jpg">Math <span>2:31</span></button>
-                <button class="media__tab" type="button" aria-pressed="false"
-                        data-src="media/manim-lesson-builder/history-lesson.mp4"
-                        data-poster="media/manim-lesson-builder/history-poster.jpg">History <span>2:56</span></button>
-              </div>
               <video src="media/manim-lesson-builder/lesson.mp4"
                      poster="media/manim-lesson-builder/poster.jpg"
                      width="1920" height="1080"
                      controls playsinline preload="none"></video>
+              <div class="media__list" role="group" aria-label="Choose a lesson">
+                <button class="media__item is-active" type="button" aria-pressed="true"
+                        data-src="media/manim-lesson-builder/lesson.mp4"
+                        data-poster="media/manim-lesson-builder/poster.jpg">
+                  <img src="media/manim-lesson-builder/poster.jpg" alt="" width="1280" height="720" loading="lazy">
+                  <span class="media__item-text">
+                    <span class="media__item-kicker">Math &middot; 2:31</span>
+                    <span class="media__item-title">The derivative of x&sup3;</span>
+                  </span>
+                </button>
+                <button class="media__item" type="button" aria-pressed="false"
+                        data-src="media/manim-lesson-builder/history-lesson.mp4"
+                        data-poster="media/manim-lesson-builder/history-poster.jpg">
+                  <img src="media/manim-lesson-builder/history-poster.jpg" alt="" width="1280" height="720" loading="lazy">
+                  <span class="media__item-text">
+                    <span class="media__item-kicker">History &middot; 2:56</span>
+                    <span class="media__item-title">From Republic to Empire: How Rome Changed</span>
+                  </span>
+                </button>
+              </div>
               <figcaption>
                 Two lessons, each generated end to end from a plain-language topic. Captions are
                 timed from the measured audio, so they hold sync throughout.

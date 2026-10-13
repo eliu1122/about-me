@@ -342,26 +342,25 @@ h1, h2, h3, h4 {
 
 .media figcaption { font-size: .85rem; color: var(--muted); padding: .75rem 1rem; border-top: 1px solid var(--line); }
 
-/* Tabs along the top of a .media frame that switch which video it plays. Each is its own
-   pill with a leading dot (the .chip pattern from the hero), so they read as two separate
-   places to go: the dot is a hollow ring until its tab is the one playing, then fills mint. */
-.media__tabs { display: flex; gap: .5rem; padding: .7rem .8rem; border-bottom: 1px solid var(--line); overflow-x: auto; scrollbar-width: none; }
-.media__tabs::-webkit-scrollbar { display: none; }
-.media__tab {
-  display: inline-flex; align-items: center; gap: .5rem;
-  font-family: inherit; font-size: .84rem; font-weight: 500; cursor: pointer; white-space: nowrap;
-  padding: .4rem .9rem .4rem .75rem; border: 1px solid var(--line-strong); border-radius: 999px;
+/* A playlist under the player in a .media frame: one thumbnail card per video, the way a
+   video page lists what else there is to watch. The one playing gets the mint outline. */
+.media__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem; padding: .75rem; border-top: 1px solid var(--line); }
+.media__item {
+  display: flex; align-items: center; gap: .8rem; text-align: left; cursor: pointer;
+  font-family: inherit; padding: .5rem; border: 1px solid var(--line); border-radius: 12px;
   background: transparent; color: var(--ink-2);
-  transition: color .2s, border-color .2s, background-color .2s;
+  transition: border-color .2s, background-color .2s;
 }
-.media__tab::before {
-  content: ""; width: 8px; height: 8px; border-radius: 50%; flex: none;
-  border: 1.5px solid var(--muted); transition: background-color .2s, border-color .2s;
+.media__item img { width: 104px; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 7px; flex: none; background: #000; }
+.media__item-text { display: grid; gap: .2rem; min-width: 0; }
+.media__item-kicker { font-family: var(--mono); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); transition: color .2s; }
+.media__item-title { font-size: .88rem; font-weight: 600; line-height: 1.3; color: var(--ink); }
+.media__item:hover { border-color: var(--line-strong); }
+.media__item.is-active { border-color: var(--mint); background: var(--mint-wash); }
+.media__item.is-active .media__item-kicker { color: var(--mint); }
+@media (max-width: 720px) {
+  .media__list { grid-template-columns: 1fr; }
 }
-.media__tab span { font-family: var(--mono); font-size: .74rem; opacity: .75; }
-.media__tab:hover { color: var(--ink); border-color: var(--mint); }
-.media__tab.is-active { color: var(--ink); background: var(--mint-wash); border-color: var(--mint); }
-.media__tab.is-active::before { background: var(--mint); border-color: var(--mint); }
 
 /* .media ships with margin: 0, so a figure sitting straight after a paragraph picked up only
    the paragraph's own bottom margin and read as part of it. Matches the gap `.repo-link + *`
