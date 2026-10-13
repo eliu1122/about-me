@@ -342,6 +342,19 @@ h1, h2, h3, h4 {
 
 .media figcaption { font-size: .85rem; color: var(--muted); padding: .75rem 1rem; border-top: 1px solid var(--line); }
 
+/* Tabs along the top of a .media frame that switch which video it plays. Same underline
+   treatment as .obs__tab so the two tab rows on the page read as one pattern. */
+.media__tabs { display: flex; gap: .25rem; padding: .5rem .6rem 0; border-bottom: 1px solid var(--line); overflow-x: auto; scrollbar-width: none; }
+.media__tabs::-webkit-scrollbar { display: none; }
+.media__tab {
+  font-family: inherit; font-size: .84rem; font-weight: 500; cursor: pointer; white-space: nowrap;
+  padding: .55rem .8rem; border: 0; background: transparent; color: var(--muted);
+  border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color .2s, border-color .2s;
+}
+.media__tab span { font-family: var(--mono); font-size: .74rem; margin-left: .35rem; opacity: .75; }
+.media__tab:hover { color: var(--ink-2); }
+.media__tab.is-active { color: var(--ink); border-bottom-color: var(--mint); }
+
 /* .media ships with margin: 0, so a figure sitting straight after a paragraph picked up only
    the paragraph's own bottom margin and read as part of it. Matches the gap `.repo-link + *`
    already gives the Footnote screenshot. */

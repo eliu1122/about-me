@@ -260,14 +260,24 @@
               length, and none of them can render a correct equation.
             </p>
 
+            <!-- The tabs swap the one <video>'s src/poster (see .media__tab in main.js), so only
+                 the lesson being watched is ever downloaded. -->
             <figure class="media">
+              <div class="media__tabs" role="group" aria-label="Choose a lesson">
+                <button class="media__tab is-active" type="button" aria-pressed="true"
+                        data-src="media/manim-lesson-builder/lesson.mp4"
+                        data-poster="media/manim-lesson-builder/poster.jpg">Math <span>2:31</span></button>
+                <button class="media__tab" type="button" aria-pressed="false"
+                        data-src="media/manim-lesson-builder/history-lesson.mp4"
+                        data-poster="media/manim-lesson-builder/history-poster.jpg">History <span>2:56</span></button>
+              </div>
               <video src="media/manim-lesson-builder/lesson.mp4"
                      poster="media/manim-lesson-builder/poster.jpg"
                      width="1920" height="1080"
                      controls playsinline preload="none"></video>
               <figcaption>
-                Generated end to end from a plain-language topic, 2:31 long. Captions are timed
-                from the measured audio, so they hold sync throughout.
+                Two lessons, each generated end to end from a plain-language topic. Captions are
+                timed from the measured audio, so they hold sync throughout.
               </figcaption>
             </figure>
           </div>

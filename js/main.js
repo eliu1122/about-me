@@ -218,6 +218,30 @@
     });
   });
 
+  /* ---------- Video tabs: one player, several clips ----------
+     Each .media__tab carries a data-src/data-poster pair; clicking one points the
+     figure's <video> at it. Switching stops playback and shows the new poster. */
+  document.querySelectorAll('.media__tabs').forEach(function (bar) {
+    var video = bar.parentNode.querySelector('video');
+    var tabs = bar.querySelectorAll('.media__tab');
+    if (!video) return;
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        if (tab.classList.contains('is-active')) return;
+        tabs.forEach(function (t) {
+          var on = t === tab;
+          t.classList.toggle('is-active', on);
+          t.setAttribute('aria-pressed', String(on));
+        });
+        video.pause();
+        video.poster = tab.getAttribute('data-poster');
+        video.src = tab.getAttribute('data-src');
+        video.load();
+      });
+    });
+  });
+
   /* ---------- Footer year ---------- */
   var year = document.getElementById('year');
   if (year) year.textContent = String(new Date().getFullYear());
