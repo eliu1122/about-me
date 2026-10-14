@@ -67,7 +67,6 @@
   <a class="doc__back" href="index.html#sec-simplifier">&larr; Back to Footnote</a>
 
   <h1>Footnote</h1>
-  <p class="doc__meta">Product requirements &middot; Eric Liu &middot; September 2026</p>
 
   <p class="lede">
     Grounded Q&amp;A over SEC filings: ask a plain-English question about a US public company
@@ -102,29 +101,12 @@
   <div class="doc__table-wrap">
     <table>
       <thead>
-        <tr><th></th><th>v1</th><th>v2 (later)</th></tr>
+        <tr><th>v1</th><th>v2 (later)</th></tr>
       </thead>
       <tbody>
-        <tr>
-          <th>Question</th>
-          <td>One company per question, answered only from its filings</td>
-          <td>Comparing companies in one answer, which needs period alignment and line-item reconciliation</td>
-        </tr>
-        <tr>
-          <th>Companies</th>
-          <td>Any US company with a ticker in EDGAR, indexed on demand</td>
-          <td>Foreign private issuers, funds, and private companies</td>
-        </tr>
-        <tr>
-          <th>Filings</th>
-          <td>The two most recent 10-K, 10-Q, 8-K, and DEF 14A</td>
-          <td>Alerts when a new filing lands</td>
-        </tr>
-        <tr>
-          <th>Trust</th>
-          <td>Citations to the filing section, and &ldquo;not disclosed&rdquo; when the filings don&rsquo;t cover the question</td>
-          <td>&mdash;</td>
-        </tr>
+        <tr><td>One company per question</td><td>Compare companies in one answer</td></tr>
+        <tr><td>Any US company with a ticker</td><td>Foreign issuers and funds</td></tr>
+        <tr><td>Latest 10-K, 10-Q, 8-K, DEF 14A</td><td>Alerts on new filings</td></tr>
       </tbody>
     </table>
   </div>
