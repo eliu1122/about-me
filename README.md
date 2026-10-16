@@ -9,7 +9,7 @@ python -m http.server 8000   # http://localhost:8000
 | Path | Contents |
 | --- | --- |
 | `index.html` | Page content |
-| `footnote-prd.html` | Footnote PRD, linked from the project |
+| `footnote-prd.html` | Footnote PRD (link hidden in `index.html` for now) |
 | `css/styles.css` | Styles; design tokens in `:root` |
 | `js/main.js` | Nav, theme toggle, scroll effects |
 | `media/` | Images, video, résumé ([details](media/README.md)) |
