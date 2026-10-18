@@ -527,8 +527,9 @@ h1, h2, h3, h4 {
   display: block; color: var(--ink); font-family: var(--body);
   font-size: .95rem; font-weight: 600; letter-spacing: 0; margin-bottom: .2rem;
 }
-/* The in-progress pill sits under the dates in the left column. */
-.job__when .status { margin-top: .7rem; }
+/* The in-progress pill stands in for the date line, so it's trimmed to roughly a line's
+   height to keep this column as short as the others. */
+.job__when .status { margin-top: .1rem; padding: .12rem .65rem; font-size: .66rem; }
 
 .job h3 { font-size: 1.35rem; margin-bottom: .3rem; color: var(--ink); transition: color .2s; }
 .job__role { color: var(--mint); font-weight: 500; font-size: .97rem; display: block; }
