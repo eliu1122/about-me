@@ -12,6 +12,7 @@ python -m http.server 8000   # http://localhost:8000
 | `footnote-prd.html` | Footnote PRD, linked from the project |
 | `css/styles.css` | Styles; design tokens in `:root` |
 | `js/main.js` | Nav, theme toggle, scroll effects |
+| `js/analytics.js` | PostHog visitor tracking; visit with `?notrack=1` to exclude yourself |
 | `media/` | Images, video, résumé ([details](media/README.md)) |
 
 ## Adding media
