@@ -1,38 +1,19 @@
-# media/ — where your files go
+# media/
 
-Filenames matter: the page references these exact names, so either match them or update
-the `src` in `index.html`.
-
-## Your photo
-
-```
-media/profile.jpg
-```
-
-Directly in this `media` folder, not a subfolder. Save it as `profile.jpg` and it appears
-in the Contact section automatically. Until then the page shows a dashed "Photo" placeholder.
-
-The frame is 4:5 and keeps the upper part of the image, so a head-and-shoulders crop looks
-best. To change what it keeps, edit `object-position: center 22%` in `.portrait img` in
-`css/styles.css`.
-
-## What's in use now
+`index.html` references these exact filenames. Rename a file and you have to update its `src` too.
 
 | File | Where it shows |
 | --- | --- |
-| `profile.jpg` | Contact section portrait. |
-| `fridayflicks.png` | FridayFlicks project — the tilting phone screenshot. |
-| `manim-lesson-builder/lesson.mp4` | Manim Lesson Builder — the generated lesson video (1920×1080, 2:31, 4.2 MB). |
-| `manim-lesson-builder/poster.jpg` | Its poster frame, pulled from 2:08 so the player isn’t a black box before play. |
-| `sec-simplifier/footnote-app.png` | Footnote project — the app screenshot in its scrollable frame. |
-| `Yun_Chung_(Eric)_Liu_Resume.pdf` | Résumé link in Contact. |
+| `profile.jpg` | Contact portrait. 4:5 frame, cropped toward the top; adjust `object-position` in `.portrait img` |
+| `fridayflicks.png` | FridayFlicks phone screenshot |
+| `manim-lesson-builder/lesson.mp4`, `poster.jpg` | Manim math lesson and its poster frame |
+| `manim-lesson-builder/history-lesson.mp4`, `history-poster.jpg` | Manim history lesson and its poster frame |
+| `sec-simplifier/footnote-app.png` | Footnote app screenshot |
+| `Yun_Chung_(Eric)_Liu_Resume.pdf` | Résumé link in Contact. Replace the file in place and bump "Updated …" in `index.html` |
 
-## Optional
+Not yet used:
 
 | File | Where it would show |
 | --- | --- |
-| `bear-run/gameplay.mp4` | Not wired up — Bear Run currently links out to itch.io instead. |
-| `og-card.png` | 1200×630 link-preview image; uncomment the `og:image` tag in `index.html`. |
-
-To add a new image, drop the file in and put a `<figure class="media">` (or a `.shot` with
-`data-label`/`data-path`) in `index.html` where you want it.
+| `og-card.png` | 1200×630 link preview; uncomment the `og:image` tag in `index.html` |
+| `bear-run/gameplay.mp4` | Bear Run, which links to itch.io for now |
