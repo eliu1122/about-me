@@ -111,33 +111,12 @@
     <!-- ---------- Desk scene (hand-built SVG; colors follow the CSS tokens) ---------- -->
     <div class="hero__art">
       <svg class="scene" viewBox="0 0 720 560" role="img" aria-labelledby="sceneTitle">
-        <title id="sceneTitle">Illustration of a desk under a hanging lamp: a monitor showing a dashboard, a laptop, a mug of coffee, a plant, and floating cards for a filing and a cited answer.</title>
+        <title id="sceneTitle">Illustration of a desk: a monitor showing a dashboard, a laptop, a mug of coffee, a plant, and floating cards for a filing and a cited answer.</title>
 
         <!-- background -->
         <ellipse class="blob" cx="372" cy="272" rx="272" ry="236"/>
         <circle class="glow" cx="612" cy="196" r="66" fill="none" stroke="var(--mint-soft)" stroke-width="3"/>
         <circle class="glow" cx="96" cy="300" r="26" fill="none" stroke="var(--mint-soft)" stroke-width="3"/>
-
-        <!-- evening extras: lamp light and screen glow (see "Desk toys" in main.js) -->
-        <defs>
-          <linearGradient id="lampLight" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="var(--lamp)" stop-opacity=".5"/>
-            <stop offset="1" stop-color="var(--lamp)" stop-opacity="0"/>
-          </linearGradient>
-          <radialGradient id="screenGlow">
-            <stop offset="0" stop-color="var(--mint)" stop-opacity=".35"/>
-            <stop offset="1" stop-color="var(--mint)" stop-opacity="0"/>
-          </radialGradient>
-        </defs>
-        <path class="lamp-light" d="M164 130 L208 130 L270 430 L102 430 Z" fill="url(#lampLight)"/>
-        <ellipse class="screen-glow" cx="366" cy="256" rx="200" ry="150" fill="url(#screenGlow)"/>
-
-        <!-- hanging lamp -->
-        <g class="desk-toy lamp" data-toy="lamp">
-          <path class="stroke thin" d="M186 20 V98"/>
-          <ellipse class="lamp__bulb" cx="186" cy="128" rx="13" ry="6"/>
-          <path class="fill-card stroke" d="M160 128 L170 98 L202 98 L212 128 Z"/>
-        </g>
 
         <!-- floating filing card -->
         <g class="float">
@@ -171,8 +150,7 @@
         <rect class="fill-card stroke" x="112" y="446" width="15" height="94" rx="4"/>
         <rect class="fill-card stroke" x="600" y="446" width="15" height="94" rx="4"/>
 
-        <!-- monitor (click for the next question) -->
-        <g class="desk-toy monitor" data-toy="monitor">
+        <!-- monitor -->
         <rect class="fill-card stroke" x="312" y="416" width="108" height="14" rx="6"/>
         <rect class="fill-card stroke" x="352" y="372" width="28" height="48" rx="4"/>
         <rect class="fill-card stroke" x="222" y="148" width="288" height="226" rx="14"/>
@@ -192,7 +170,6 @@
         <g class="bar-live" style="--to: 1.15"><rect class="bar bar--4 fill-mint stroke thin" x="388" y="266" width="26" height="64" rx="4"/></g>
         <rect class="fill-mint" x="258" y="222" width="140" height="6" rx="3"/>
         <rect class="fill-mint" x="258" y="238" width="108" height="6" rx="3"/>
-        </g>
 
         <!-- laptop -->
         <path class="fill-card stroke" d="M520 414 L534 330 L644 330 L654 414 Z"/>
@@ -206,31 +183,20 @@
         <rect class="fill-card stroke thin" x="428" y="414" width="74" height="10" rx="3" transform="rotate(2 465 419)"/>
         <rect class="fill-card stroke thin" x="424" y="422" width="74" height="8" rx="3"/>
 
-        <!-- plant (click to wiggle) -->
-        <g class="desk-toy plant" data-toy="plant">
-        <g class="plant__leaves">
+        <!-- plant -->
         <path class="leaf fill-mint stroke thin" d="M124 384 C 102 358 104 330 122 316 C 140 332 140 362 124 384 Z"/>
         <path class="leaf leaf--b fill-mint stroke thin" d="M122 386 C 96 378 78 356 86 336 C 108 340 122 362 122 386 Z"/>
         <path class="leaf leaf--c fill-mint stroke thin" d="M126 386 C 152 378 168 356 160 336 C 138 340 126 362 126 386 Z"/>
-        </g>
         <path class="fill-card stroke" d="M98 392 L152 392 L144 430 L106 430 Z"/>
         <rect class="fill-card stroke" x="92" y="382" width="66" height="12" rx="4"/>
-        </g>
 
-        <!-- mug (click for a puff of steam; a tea bag hangs in it in the evening) -->
-        <g class="desk-toy mug" data-toy="mug">
+        <!-- mug -->
         <path class="steam stroke thin" d="M190 380 C 184 370 196 364 190 350"/>
         <path class="steam steam--2 stroke thin" d="M202 380 C 196 368 208 362 202 346"/>
         <path class="steam steam--3 stroke thin" d="M214 380 C 208 370 220 364 214 352"/>
         <path class="stroke" d="M226 398 C 244 398 244 422 224 422" fill="none"/>
         <path class="fill-card stroke" d="M176 390 L228 390 L220 430 L184 430 Z"/>
         <ellipse class="fill-mint stroke thin" cx="202" cy="390" rx="26" ry="7"/>
-        <g class="teabag">
-          <path class="stroke thin" d="M198 390 C 194 374 178 376 172 398"/>
-          <rect class="fill-card stroke thin" x="165" y="398" width="14" height="16" rx="2"/>
-          <rect class="fill-mint-strong" x="168" y="403" width="8" height="3" rx="1.5"/>
-        </g>
-        </g>
       </svg>
     </div>
 
