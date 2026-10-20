@@ -135,10 +135,10 @@
             <rect class="fill-card stroke thin" x="0" y="0" width="150" height="86" rx="12"/>
             <path class="fill-card stroke thin" d="M34 86 L30 108 L58 86 Z"/>
             <circle class="fill-mint stroke thin" cx="30" cy="30" r="13"/>
-            <path d="M24 30.5 l4.5 4.5 L37 25" fill="none" stroke="var(--mint)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            <rect class="fill-mint" x="54" y="22" width="76" height="7" rx="3.5"/>
-            <rect class="fill-mint" x="54" y="38" width="52" height="7" rx="3.5"/>
-            <rect class="fill-mint" x="20" y="58" width="110" height="7" rx="3.5"/>
+            <path class="check" pathLength="1" d="M24 30.5 l4.5 4.5 L37 25" fill="none" stroke="var(--mint)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect class="answer fill-mint" x="54" y="22" width="76" height="7" rx="3.5"/>
+            <rect class="answer answer--2 fill-mint" x="54" y="38" width="52" height="7" rx="3.5"/>
+            <rect class="answer answer--3 fill-mint" x="20" y="58" width="110" height="7" rx="3.5"/>
           </g>
         </g>
 
@@ -158,16 +158,16 @@
         <circle class="fill-mint" cx="254" cy="180" r="4"/>
         <circle class="fill-mint" cx="268" cy="180" r="4"/>
         <circle class="fill-mint" cx="282" cy="180" r="4"/>
-        <!-- query line + caret -->
-        <rect class="fill-mint-strong" x="254" y="198" width="96" height="7" rx="3.5"/>
-        <rect class="fill-mint" x="358" y="198" width="52" height="7" rx="3.5"/>
+        <!-- query line + caret (typed out on a loop; see "Desk loop" in styles.css) -->
+        <rect class="typed fill-mint-strong" x="254" y="198" width="96" height="7" rx="3.5"/>
+        <rect class="typed typed--2 fill-mint" x="358" y="198" width="52" height="7" rx="3.5"/>
         <rect class="cursor fill-ink" x="418" y="195" width="3" height="13" rx="1.5"/>
         <!-- little chart -->
         <path class="stroke thin" d="M258 330 H474" stroke-opacity=".4"/>
-        <rect class="bar fill-mint stroke thin" x="268" y="286" width="26" height="44" rx="4"/>
-        <rect class="bar bar--2 fill-mint-strong" x="308" y="256" width="26" height="74" rx="4"/>
-        <rect class="bar bar--3 fill-mint stroke thin" x="348" y="298" width="26" height="32" rx="4"/>
-        <rect class="bar bar--4 fill-mint stroke thin" x="388" y="266" width="26" height="64" rx="4"/>
+        <g class="bar-live" style="--to: 1.35"><rect class="bar fill-mint stroke thin" x="268" y="286" width="26" height="44" rx="4"/></g>
+        <g class="bar-live" style="--to: .8"><rect class="bar bar--2 fill-mint-strong" x="308" y="256" width="26" height="74" rx="4"/></g>
+        <g class="bar-live" style="--to: 1.6"><rect class="bar bar--3 fill-mint stroke thin" x="348" y="298" width="26" height="32" rx="4"/></g>
+        <g class="bar-live" style="--to: 1.15"><rect class="bar bar--4 fill-mint stroke thin" x="388" y="266" width="26" height="64" rx="4"/></g>
         <rect class="fill-mint" x="258" y="222" width="140" height="6" rx="3"/>
         <rect class="fill-mint" x="258" y="238" width="108" height="6" rx="3"/>
 
