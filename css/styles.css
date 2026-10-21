@@ -518,7 +518,7 @@ h1, h2, h3, h4 {
 .obs__panel tbody td:not(:first-child) { color: var(--muted); }
 .obs__more-row td { color: var(--faint); font-style: italic; }
 
-.obs__caption { font-size: .8rem; color: var(--muted); margin: .75rem .25rem 0; max-width: 60ch; }
+.obs__caption { font-size: .8rem; color: var(--muted); margin: .75rem 0 0; max-width: 60ch; }
 
 @media (prefers-reduced-motion: reduce) {
   .obs__btn.is-spinning svg { transform: none; }
