@@ -427,10 +427,19 @@ h1, h2, h3, h4 {
 
 /* A recreation of the Portfolio Observability page — invented names/numbers, no screenshot.
    Framed as a browser window (chrome bar + its own app surface and system font) so it reads
-   as a separate web page rather than more of this site. Hint above, caption below. */
-.obs { margin: 2.25rem 0 0; max-width: 600px; }
-.obs__hint {
-  display: flex; align-items: center; gap: .45rem; margin: 0 0 .6rem;
+   as a separate web page rather than more of this site. It sits on its own dot-grid stage,
+   with the hint as a badge on top and the caption just below it, so the edges of the demo are clear. */
+.obs { margin: 2.5rem 0 0; }
+.obs__stage {
+  padding: clamp(1rem, 3vw, 1.75rem);
+  border: 1px solid var(--line); border-radius: var(--radius-lg);
+  background-color: var(--mint-wash);
+  background-image: radial-gradient(var(--line-strong) 1px, transparent 1.2px);
+  background-size: 18px 18px;
+}
+.obs .obs__hint {   /* doubled class to beat .job__body p's margin */
+  display: inline-flex; align-items: center; gap: .45rem; margin: 0 0 1rem;
+  padding: .3rem .7rem; border: 1px solid var(--line); border-radius: 999px; background: var(--card);
   font-family: var(--mono); font-size: .7rem; letter-spacing: .09em; text-transform: uppercase;
   color: var(--mint);
 }
@@ -440,7 +449,8 @@ h1, h2, h3, h4 {
   --app-bg: #f2f4f7; --app-panel: #ffffff; --app-chrome: #e4e7ec; --app-url: #f8f9fb;
   --app-font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   background: var(--app-bg); border: 1px solid var(--line-strong); border-radius: 12px;
-  box-shadow: var(--shadow-md); overflow: hidden; font-family: var(--app-font);
+  box-shadow: var(--shadow-md), 0 30px 60px -20px rgba(0, 0, 0, .18);
+  overflow: hidden; font-family: var(--app-font);
 }
 :root[data-theme="dark"] .obs__window {
   --app-bg: #161b22; --app-panel: #1d232c; --app-chrome: #232a33; --app-url: #161b22;
@@ -508,7 +518,7 @@ h1, h2, h3, h4 {
 .obs__panel tbody td:not(:first-child) { color: var(--muted); }
 .obs__more-row td { color: var(--faint); font-style: italic; }
 
-.obs__caption { font-size: .8rem; color: var(--muted); margin-top: .75rem; }
+.obs__caption { font-size: .8rem; color: var(--muted); margin: .75rem .25rem 0; max-width: 60ch; }
 
 @media (prefers-reduced-motion: reduce) {
   .obs__btn.is-spinning svg { transform: none; }
