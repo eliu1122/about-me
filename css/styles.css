@@ -683,29 +683,19 @@ details[open] .job__more svg { transform: rotate(180deg); }
 .glow { animation: glow 5s ease-in-out infinite; }
 @keyframes glow { 0%, 100% { opacity: .45; } 50% { opacity: .72; } }
 
-/* Mascot bears under the desk: WashU (red scarf, green stripe) and Cornell (Big Red).
-   They breathe and blink, take turns waving every 10s, and wave quickly on hover. */
-.bear__body { transform-box: fill-box; transform-origin: 50% 100%; animation: bear-breathe 3.6s ease-in-out infinite; }
-@keyframes bear-breathe { 50% { transform: scaleY(1.025); } }
-.bear__eye { transform-box: fill-box; transform-origin: center; animation: bear-blink 5s infinite; }
-@keyframes bear-blink { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(.1); } }
-.bear__arm {
-  transform-box: fill-box; transform-origin: 50% 100%; transform: rotate(18deg);
-  animation: bear-wave 10s ease-in-out infinite;
-}
-@keyframes bear-wave {
-  0%, 12%, 100% { transform: rotate(18deg); }
-  3%, 9%        { transform: rotate(42deg); }
-  6%            { transform: rotate(6deg); }
-}
-.bear:hover .bear__arm { animation: bear-wave-fast .8s ease-in-out infinite; }
-@keyframes bear-wave-fast { 0%, 100% { transform: rotate(18deg); } 50% { transform: rotate(48deg); } }
-.bear--cornell .bear__body, .bear--cornell .bear__eye { animation-delay: -1.7s; }
-.bear--cornell .bear__arm { animation-delay: -5s; }
-/* WashU's bear is brown; Cornell's Touchdown is a black bear, so it's the darker one. */
-.bear--washu { --fur: #b9875a; --fur-light: #ecd5b5; }
-.bear--cornell { --fur: #6e4a33; --fur-light: #d9b48f; }
+/* Mascot bears: WashU (brown, red scarf with a green stripe) and Cornell (Touchdown is a black
+   bear, so it's the darker one; Big Red scarf). They walk the floor on a shared 30s loop: in from
+   the left (0-40%), stop mid-floor and look up with a tail wag (40-55%), out to the right (55-95%),
+   then a beat offscreen. Legs and bob run on short loops scaled by --walk, which the 30s timeline
+   sets to 1 while walking and 0 during the pause. Hover freezes them; reduced motion parks them
+   by the left desk leg. */
+@property --walk { syntax: "<number>"; inherits: true; initial-value: 0; }
+@property --swing { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+@property --bob { syntax: "<length>"; inherits: false; initial-value: 0px; }
+.bear--washu { --fur: #b9875a; --fur-dark: #9a6d45; --fur-light: #ecd5b5; }
+.bear--cornell { --fur: #6e4a33; --fur-dark: #563827; --fur-light: #d9b48f; }
 .scene .bear__fur { fill: var(--fur); }
+.scene .bear__leg--far { fill: var(--fur-dark); }
 .scene .bear__light { fill: var(--fur-light); }
 .scene .bear__dark { fill: #1b1410; }
 .bear__scarf { stroke: var(--ink); stroke-width: 2.2; }
@@ -713,6 +703,44 @@ details[open] .job__more svg { transform: rotate(180deg); }
 .bear--washu .bear__stripe { fill: #007360; }
 .bear--cornell .bear__scarf { fill: #b31b1b; }
 .bear--cornell .bear__stripe { fill: #fff; }
+
+.bears { transform: translateX(290px); animation: bears-walk 30s linear infinite; }
+@keyframes bears-walk {
+  0%        { transform: translateX(-60px); --walk: 1; }
+  39%       { --walk: 1; }
+  40%, 55%  { transform: translateX(400px); --walk: 0; }
+  56%, 94%  { --walk: 1; }
+  95%, 100% { transform: translateX(860px); --walk: 0; }
+}
+.bears:hover, .bears:hover * { animation-play-state: paused; }
+
+.bear__leg {
+  transform-box: fill-box; transform-origin: 50% 15%;
+  transform: rotate(calc(var(--swing) * var(--walk)));
+  animation: bear-step .4s ease-in-out infinite alternate;
+}
+.bear__leg--b { animation-delay: -.4s; }   /* diagonal pairs move opposite each other */
+.bear--cornell .bear__leg { animation-delay: -.15s; }
+.bear--cornell .bear__leg--b { animation-delay: -.55s; }
+@keyframes bear-step { from { --swing: -16deg; } to { --swing: 16deg; } }
+
+.bear__torso { transform: translateY(calc(var(--bob) * var(--walk))); animation: bear-bob .2s ease-in-out infinite alternate; }
+@keyframes bear-bob { from { --bob: 0px; } to { --bob: -1.5px; } }
+
+.bear__head { transform-box: fill-box; transform-origin: 0% 80%; animation: bear-look 30s ease-in-out infinite; }
+@keyframes bear-look {
+  0%, 41%, 54%, 100% { transform: rotate(0); }
+  43%, 52%           { transform: rotate(-12deg); }
+}
+.bear__tail { transform-box: fill-box; transform-origin: 100% 50%; animation: bear-wag 30s infinite; }
+@keyframes bear-wag {
+  0%, 42%, 53%, 100% { transform: rotate(0); }
+  43.5%, 46.5%, 49.5% { transform: rotate(25deg); }
+  45%, 48%, 51%       { transform: rotate(-25deg); }
+}
+.bear__eye { transform-box: fill-box; transform-origin: center; animation: bear-blink 5s infinite; }
+.bear--cornell .bear__eye { animation-delay: -1.7s; }
+@keyframes bear-blink { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(.1); } }
 
 /* Desk loop (10s): the query is typed, the chart updates, the answer bubble checks off,
    then it all resets. Every piece shares the 10s cycle, so the percentages line up. */
