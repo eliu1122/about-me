@@ -111,7 +111,7 @@
     <!-- ---------- Desk scene (hand-built SVG; colors follow the CSS tokens) ---------- -->
     <div class="hero__art">
       <svg class="scene" viewBox="0 0 720 560" role="img" aria-labelledby="sceneTitle">
-        <title id="sceneTitle">Illustration of a desk: a monitor showing a dashboard, a laptop, a mug of coffee, a plant, floating cards for a filing and a cited answer, and two bears in WashU and Cornell scarves walking along the floor.</title>
+        <title id="sceneTitle">Illustration of a desk: a monitor showing a dashboard, a laptop, a mug of coffee, a plant, floating cards for a filing and a cited answer, and two bears walking along the floor: a WashU bear in a red graduation cap and a Cornell bear in a red scarf.</title>
 
         <!-- background -->
         <ellipse class="blob" cx="372" cy="272" rx="272" ry="236"/>
@@ -166,14 +166,12 @@
               <title>WashU bear</title>
               <ellipse class="bear__shadow" cx="2" cy="1" rx="34" ry="3"/>
               <g class="bear__pose">
-                <g transform="translate(19 -24)"><g class="bear__fold bear__fold--front"><path class="bear__leg bear__leg--a stroke thin bear__leg--far" d="M-6 0 H6 L5.5 19 C6 22 9 23 10 24 H-5 C-6.5 24 -6.5 22 -6 19 Z"/></g></g>
-                <g transform="translate(-14 -24)"><g class="bear__fold bear__fold--back"><path class="bear__leg bear__leg--b stroke thin bear__leg--far" d="M-6 0 H6 L5.5 19 C6 22 9 23 10 24 H-5 C-6.5 24 -6.5 22 -6 19 Z"/></g></g>
+                <g transform="translate(19 -24)"><g class="bear__fold bear__fold--front"><g class="bear__leg bear__leg--a"><path class="bear__farfur" d="M-6 0 H6 L5.5 19 C6 22 9 23 10 24 H-5 C-6.5 24 -6.5 22 -6 19 Z"/><path class="stroke thin" d="M-6 9.5 L-6 19 C-6.5 22 -6.5 24 -5 24 H10 C9 23 6 22 5.5 19 L5.75 9.5"/></g></g></g>
+                <g transform="translate(-14 -24)"><g class="bear__fold bear__fold--back"><g class="bear__leg bear__leg--b"><path class="bear__farfur" d="M-6 0 H6 L5.5 19 C6 22 9 23 10 24 H-5 C-6.5 24 -6.5 22 -6 19 Z"/><path class="stroke thin" d="M-6 9.5 L-6 19 C-6.5 22 -6.5 24 -5 24 H10 C9 23 6 22 5.5 19 L5.75 9.5"/></g></g></g>
                 <g class="bear__lift">
                   <g class="bear__torso">
                     <circle class="bear__tail bear__fur stroke thin" cx="-36" cy="-36" r="4"/>
                     <path class="bear__fur stroke" d="M-24 -14 C -36 -16 -38 -38 -26 -42 C -14 -46 -4 -50 6 -51 C 16 -52 22 -46 24 -38 C 28 -28 26 -16 18 -14 Z"/>
-                    <rect class="bear__scarf" x="16" y="-48" width="8" height="21" rx="4" transform="rotate(-24 20 -37)"/>
-                    <rect class="bear__stripe" x="16.5" y="-39" width="7" height="3" transform="rotate(-24 20 -37)"/>
                     <g class="bear__head">
                       <circle class="bear__fur stroke" cx="24" cy="-42" r="4.5"/>
                       <circle class="bear__fur stroke" cx="30" cy="-33" r="11"/>
@@ -181,6 +179,12 @@
                       <path class="stroke thin" d="M36 -38.6 C 42 -38 48 -35 51 -31 C 50 -27 44 -25 36 -26"/>
                       <ellipse class="bear__dark" cx="50" cy="-31" rx="2.6" ry="2"/>
                       <circle class="bear__eye bear__dark" cx="32" cy="-36" r="1.7"/>
+                      <g class="bear__cap">
+                        <path class="bear__cap-base" d="M22 -42 L38 -42 L37 -47 L23 -47 Z"/>
+                        <path class="bear__cap-board" d="M16 -48 L32 -51.5 L45 -48 L29 -44.5 Z"/>
+                        <path class="bear__tassel" d="M30.5 -48 L41 -46.5 L42 -39"/>
+                        <circle class="bear__tassel-end" cx="42" cy="-38" r="1.8"/>
+                      </g>
                     </g>
                     <g class="bear__face">
                       <circle class="bear__ear bear__fur stroke thin" cx="21" cy="-43" r="4.5"/>
@@ -190,25 +194,29 @@
                       <ellipse class="bear__dark" cx="30" cy="-30.5" rx="2.4" ry="1.7"/>
                       <circle class="bear__eye bear__dark" cx="25.5" cy="-36" r="1.6"/>
                       <circle class="bear__eye bear__dark" cx="34.5" cy="-36" r="1.6"/>
+                      <g class="bear__cap">
+                        <path class="bear__cap-base" d="M23 -43 L37 -43 L36 -47.5 L24 -47.5 Z"/>
+                        <path class="bear__cap-board" d="M15 -48.5 L30 -52.5 L45 -48.5 L30 -44.5 Z"/>
+                        <path class="bear__tassel" d="M30 -48.5 L41.5 -47.5 L42.5 -40"/>
+                        <circle class="bear__tassel-end" cx="42.5" cy="-39" r="1.8"/>
+                      </g>
                     </g>
                   </g>
                 </g>
-                <g transform="translate(14 -24)"><g class="bear__fold bear__fold--front"><path class="bear__leg bear__leg--b stroke thin bear__fur" d="M-6 0 H6 L5.5 19 C6 22 9 23 10 24 H-5 C-6.5 24 -6.5 22 -6 19 Z"/></g></g>
-                <g transform="translate(-20 -24)"><g class="bear__fold bear__fold--back"><path class="bear__leg bear__leg--a stroke thin bear__fur" d="M-6 0 H6 L5.5 19 C6 22 9 23 10 24 H-5 C-6.5 24 -6.5 22 -6 19 Z"/></g></g>
+                <g transform="translate(14 -24)"><g class="bear__fold bear__fold--front"><g class="bear__leg bear__leg--b"><path class="bear__fur" d="M-6 0 H6 L5.5 19 C6 22 9 23 10 24 H-5 C-6.5 24 -6.5 22 -6 19 Z"/><path class="stroke thin" d="M-6 9.5 L-6 19 C-6.5 22 -6.5 24 -5 24 H10 C9 23 6 22 5.5 19 L5.75 9.5"/></g></g></g>
+                <g transform="translate(-20 -24)"><g class="bear__fold bear__fold--back"><g class="bear__leg bear__leg--a"><path class="bear__fur" d="M-6 0 H6 L5.5 19 C6 22 9 23 10 24 H-5 C-6.5 24 -6.5 22 -6 19 Z"/><path class="stroke thin" d="M-6 9.5 L-6 19 C-6.5 22 -6.5 24 -5 24 H10 C9 23 6 22 5.5 19 L5.75 9.5"/></g></g></g>
               </g>
             </g>
             <g class="bear bear--cornell" transform="translate(-92 540)">
               <title>Cornell bear</title>
               <ellipse class="bear__shadow" cx="2" cy="1" rx="34" ry="3"/>
               <g class="bear__pose">
-                <g transform="translate(19 -24)"><g class="bear__fold bear__fold--front"><path class="bear__leg bear__leg--a stroke thin bear__leg--far" d="M-6 0 H6 L5.5 19 C6 22 9 23 10 24 H-5 C-6.5 24 -6.5 22 -6 19 Z"/></g></g>
-                <g transform="translate(-14 -24)"><g class="bear__fold bear__fold--back"><path class="bear__leg bear__leg--b stroke thin bear__leg--far" d="M-6 0 H6 L5.5 19 C6 22 9 23 10 24 H-5 C-6.5 24 -6.5 22 -6 19 Z"/></g></g>
+                <g transform="translate(19 -24)"><g class="bear__fold bear__fold--front"><g class="bear__leg bear__leg--a"><path class="bear__farfur" d="M-6 0 H6 L5.5 19 C6 22 9 23 10 24 H-5 C-6.5 24 -6.5 22 -6 19 Z"/><path class="stroke thin" d="M-6 9.5 L-6 19 C-6.5 22 -6.5 24 -5 24 H10 C9 23 6 22 5.5 19 L5.75 9.5"/></g></g></g>
+                <g transform="translate(-14 -24)"><g class="bear__fold bear__fold--back"><g class="bear__leg bear__leg--b"><path class="bear__farfur" d="M-6 0 H6 L5.5 19 C6 22 9 23 10 24 H-5 C-6.5 24 -6.5 22 -6 19 Z"/><path class="stroke thin" d="M-6 9.5 L-6 19 C-6.5 22 -6.5 24 -5 24 H10 C9 23 6 22 5.5 19 L5.75 9.5"/></g></g></g>
                 <g class="bear__lift">
                   <g class="bear__torso">
                     <circle class="bear__tail bear__fur stroke thin" cx="-36" cy="-36" r="4"/>
                     <path class="bear__fur stroke" d="M-24 -14 C -36 -16 -38 -38 -26 -42 C -14 -46 -4 -50 6 -51 C 16 -52 22 -46 24 -38 C 28 -28 26 -16 18 -14 Z"/>
-                    <rect class="bear__scarf" x="16" y="-48" width="8" height="21" rx="4" transform="rotate(-24 20 -37)"/>
-                    <rect class="bear__stripe" x="16.5" y="-39" width="7" height="3" transform="rotate(-24 20 -37)"/>
                     <g class="bear__head">
                       <circle class="bear__fur stroke" cx="24" cy="-42" r="4.5"/>
                       <circle class="bear__fur stroke" cx="30" cy="-33" r="11"/>
@@ -216,6 +224,14 @@
                       <path class="stroke thin" d="M36 -38.6 C 42 -38 48 -35 51 -31 C 50 -27 44 -25 36 -26"/>
                       <ellipse class="bear__dark" cx="50" cy="-31" rx="2.6" ry="2"/>
                       <circle class="bear__eye bear__dark" cx="32" cy="-36" r="1.7"/>
+                    </g>
+                    <g class="bear__scarf">
+                      <path class="bear__scarf-edge" d="M19 -37 C 11 -35 5 -31 0 -24"/>
+                      <path class="bear__scarf-red" d="M19 -37 C 11 -35 5 -31 0 -24"/>
+                      <path class="bear__scarf-edge" d="M16 -46 C 22 -43 26 -34 24 -25"/>
+                      <path class="bear__scarf-red" d="M16 -46 C 22 -43 26 -34 24 -25"/>
+                      <path class="bear__scarf-stripe" d="M16 -46 C 22 -43 26 -34 24 -25"/>
+                      <path class="bear__scarf-stripe" d="M19 -37 C 11 -35 5 -31 0 -24"/>
                     </g>
                     <g class="bear__face">
                       <circle class="bear__ear bear__fur stroke thin" cx="21" cy="-43" r="4.5"/>
@@ -225,11 +241,14 @@
                       <ellipse class="bear__dark" cx="30" cy="-30.5" rx="2.4" ry="1.7"/>
                       <circle class="bear__eye bear__dark" cx="25.5" cy="-36" r="1.6"/>
                       <circle class="bear__eye bear__dark" cx="34.5" cy="-36" r="1.6"/>
+                      <path class="bear__scarf-edge" d="M19 -25 Q 30 -19 41 -25"/>
+                      <path class="bear__scarf-red" d="M19 -25 Q 30 -19 41 -25"/>
+                      <path class="bear__scarf-stripe" d="M19 -25 Q 30 -19 41 -25"/>
                     </g>
                   </g>
                 </g>
-                <g transform="translate(14 -24)"><g class="bear__fold bear__fold--front"><path class="bear__leg bear__leg--b stroke thin bear__fur" d="M-6 0 H6 L5.5 19 C6 22 9 23 10 24 H-5 C-6.5 24 -6.5 22 -6 19 Z"/></g></g>
-                <g transform="translate(-20 -24)"><g class="bear__fold bear__fold--back"><path class="bear__leg bear__leg--a stroke thin bear__fur" d="M-6 0 H6 L5.5 19 C6 22 9 23 10 24 H-5 C-6.5 24 -6.5 22 -6 19 Z"/></g></g>
+                <g transform="translate(14 -24)"><g class="bear__fold bear__fold--front"><g class="bear__leg bear__leg--b"><path class="bear__fur" d="M-6 0 H6 L5.5 19 C6 22 9 23 10 24 H-5 C-6.5 24 -6.5 22 -6 19 Z"/><path class="stroke thin" d="M-6 9.5 L-6 19 C-6.5 22 -6.5 24 -5 24 H10 C9 23 6 22 5.5 19 L5.75 9.5"/></g></g></g>
+                <g transform="translate(-20 -24)"><g class="bear__fold bear__fold--back"><g class="bear__leg bear__leg--a"><path class="bear__fur" d="M-6 0 H6 L5.5 19 C6 22 9 23 10 24 H-5 C-6.5 24 -6.5 22 -6 19 Z"/><path class="stroke thin" d="M-6 9.5 L-6 19 C-6.5 22 -6.5 24 -5 24 H10 C9 23 6 22 5.5 19 L5.75 9.5"/></g></g></g>
               </g>
             </g>
           </g>
