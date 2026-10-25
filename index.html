@@ -111,7 +111,7 @@
     <!-- ---------- Desk scene (hand-built SVG; colors follow the CSS tokens) ---------- -->
     <div class="hero__art">
       <svg class="scene" viewBox="0 0 720 560" role="img" aria-labelledby="sceneTitle">
-        <title id="sceneTitle">Illustration of a desk: a monitor showing a dashboard, a laptop, a mug of coffee, a plant, and floating cards for a filing and a cited answer.</title>
+        <title id="sceneTitle">Illustration of a desk: a monitor showing a dashboard, a laptop, a mug of coffee, a plant, floating cards for a filing and a cited answer, and two bears in WashU and Cornell scarves standing under the desk.</title>
 
         <!-- background -->
         <ellipse class="blob" cx="372" cy="272" rx="272" ry="236"/>
@@ -149,6 +149,51 @@
         <rect class="fill-card stroke" x="50" y="430" width="630" height="17" rx="6"/>
         <rect class="fill-card stroke" x="112" y="446" width="15" height="94" rx="4"/>
         <rect class="fill-card stroke" x="600" y="446" width="15" height="94" rx="4"/>
+
+        <!-- mascot bears under the desk (original drawings in school colors, not the official logos);
+             the Cornell bear is mirrored so the two wave toward each other -->
+        <g class="bear bear--washu" transform="translate(170 0)">
+          <title>WashU bear</title>
+          <g class="bear__body">
+            <ellipse class="bear__fur stroke thin" cx="-12" cy="536" rx="10" ry="5"/>
+            <ellipse class="bear__fur stroke thin" cx="12" cy="536" rx="10" ry="5"/>
+            <ellipse class="bear__fur stroke" cx="0" cy="512" rx="23" ry="25"/>
+            <ellipse class="bear__light" cx="0" cy="518" rx="12" ry="13"/>
+            <rect class="bear__fur stroke thin" x="-29" y="498" width="11" height="24" rx="5.5" transform="rotate(14 -23 500)"/>
+            <g class="bear__arm"><rect class="bear__fur stroke thin" x="16" y="474" width="11" height="28" rx="5.5"/></g>
+            <rect class="bear__scarf" x="-17" y="487" width="34" height="9" rx="4.5"/>
+            <rect class="bear__scarf" x="5" y="492" width="8" height="17" rx="3"/>
+            <rect class="bear__stripe" x="5.5" y="500" width="7" height="3"/>
+            <circle class="bear__fur stroke" cx="-13" cy="460" r="7"/>
+            <circle class="bear__fur stroke" cx="13" cy="460" r="7"/>
+            <circle class="bear__fur stroke" cx="0" cy="474" r="18"/>
+            <ellipse class="bear__light stroke thin" cx="0" cy="481" rx="8" ry="6"/>
+            <ellipse class="bear__dark" cx="0" cy="478.5" rx="3" ry="2"/>
+            <circle class="bear__eye bear__dark" cx="-7" cy="470" r="2.2"/>
+            <circle class="bear__eye bear__dark" cx="7" cy="470" r="2.2"/>
+          </g>
+        </g>
+        <g class="bear bear--cornell" transform="translate(557 0) scale(-1 1)">
+          <title>Cornell bear</title>
+          <g class="bear__body">
+            <ellipse class="bear__fur stroke thin" cx="-12" cy="536" rx="10" ry="5"/>
+            <ellipse class="bear__fur stroke thin" cx="12" cy="536" rx="10" ry="5"/>
+            <ellipse class="bear__fur stroke" cx="0" cy="512" rx="23" ry="25"/>
+            <ellipse class="bear__light" cx="0" cy="518" rx="12" ry="13"/>
+            <rect class="bear__fur stroke thin" x="-29" y="498" width="11" height="24" rx="5.5" transform="rotate(14 -23 500)"/>
+            <g class="bear__arm"><rect class="bear__fur stroke thin" x="16" y="474" width="11" height="28" rx="5.5"/></g>
+            <rect class="bear__scarf" x="-17" y="487" width="34" height="9" rx="4.5"/>
+            <rect class="bear__scarf" x="5" y="492" width="8" height="17" rx="3"/>
+            <rect class="bear__stripe" x="5.5" y="500" width="7" height="3"/>
+            <circle class="bear__fur stroke" cx="-13" cy="460" r="7"/>
+            <circle class="bear__fur stroke" cx="13" cy="460" r="7"/>
+            <circle class="bear__fur stroke" cx="0" cy="474" r="18"/>
+            <ellipse class="bear__light stroke thin" cx="0" cy="481" rx="8" ry="6"/>
+            <ellipse class="bear__dark" cx="0" cy="478.5" rx="3" ry="2"/>
+            <circle class="bear__eye bear__dark" cx="-7" cy="470" r="2.2"/>
+            <circle class="bear__eye bear__dark" cx="7" cy="470" r="2.2"/>
+          </g>
+        </g>
 
         <!-- monitor -->
         <rect class="fill-card stroke" x="312" y="416" width="108" height="14" rx="6"/>

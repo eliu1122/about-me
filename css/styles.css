@@ -683,6 +683,37 @@ details[open] .job__more svg { transform: rotate(180deg); }
 .glow { animation: glow 5s ease-in-out infinite; }
 @keyframes glow { 0%, 100% { opacity: .45; } 50% { opacity: .72; } }
 
+/* Mascot bears under the desk: WashU (red scarf, green stripe) and Cornell (Big Red).
+   They breathe and blink, take turns waving every 10s, and wave quickly on hover. */
+.bear__body { transform-box: fill-box; transform-origin: 50% 100%; animation: bear-breathe 3.6s ease-in-out infinite; }
+@keyframes bear-breathe { 50% { transform: scaleY(1.025); } }
+.bear__eye { transform-box: fill-box; transform-origin: center; animation: bear-blink 5s infinite; }
+@keyframes bear-blink { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(.1); } }
+.bear__arm {
+  transform-box: fill-box; transform-origin: 50% 100%; transform: rotate(18deg);
+  animation: bear-wave 10s ease-in-out infinite;
+}
+@keyframes bear-wave {
+  0%, 12%, 100% { transform: rotate(18deg); }
+  3%, 9%        { transform: rotate(42deg); }
+  6%            { transform: rotate(6deg); }
+}
+.bear:hover .bear__arm { animation: bear-wave-fast .8s ease-in-out infinite; }
+@keyframes bear-wave-fast { 0%, 100% { transform: rotate(18deg); } 50% { transform: rotate(48deg); } }
+.bear--cornell .bear__body, .bear--cornell .bear__eye { animation-delay: -1.7s; }
+.bear--cornell .bear__arm { animation-delay: -5s; }
+/* WashU's bear is brown; Cornell's Touchdown is a black bear, so it's the darker one. */
+.bear--washu { --fur: #b9875a; --fur-light: #ecd5b5; }
+.bear--cornell { --fur: #6e4a33; --fur-light: #d9b48f; }
+.scene .bear__fur { fill: var(--fur); }
+.scene .bear__light { fill: var(--fur-light); }
+.scene .bear__dark { fill: #1b1410; }
+.bear__scarf { stroke: var(--ink); stroke-width: 2.2; }
+.bear--washu .bear__scarf { fill: #a51417; }
+.bear--washu .bear__stripe { fill: #007360; }
+.bear--cornell .bear__scarf { fill: #b31b1b; }
+.bear--cornell .bear__stripe { fill: #fff; }
+
 /* Desk loop (10s): the query is typed, the chart updates, the answer bubble checks off,
    then it all resets. Every piece shares the 10s cycle, so the percentages line up. */
 .typed, .answer { transform-box: fill-box; transform-origin: left; }
