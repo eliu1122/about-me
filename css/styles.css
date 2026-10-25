@@ -685,26 +685,39 @@ details[open] .job__more svg { transform: rotate(180deg); }
 
 /* Mascot bears: WashU (brown, red scarf with a green stripe) and Cornell (Touchdown is a black
    bear, so it's the darker one; Big Red scarf). They walk the floor on a shared 30s loop: in from
-   the left (0-40%), stop mid-floor and look up with a tail wag (40-55%), out to the right (55-95%),
-   then a beat offscreen. Legs and bob run on short loops scaled by --walk, which the 30s timeline
-   sets to 1 while walking and 0 during the pause. Hover freezes them; reduced motion parks them
+   the left (0-40%), a pause mid-floor (40-55%), out to the right (55-95%), then a beat offscreen.
+
+   Every pose keyframe uses that same 30s timeline so nothing drifts. The pause behavior comes from
+   data-pause on .bears (sit, sniff, or stretch), which main.js re-picks each lap.
+
+   Registered custom properties drive the moving parts:
+     --walk   1 while walking, 0 in the pause (part of the walk animation); scales the leg swing and bob
+     --hover  0 → 1 on hover (transitioned): stops the legs and turns the faces toward you
+     --look   1 while the pause behavior wants the bears facing you (the sit)
+   Hover pauses all the 30s timelines together, so they stay in sync. Reduced motion parks the bears
    by the left desk leg. */
 @property --walk { syntax: "<number>"; inherits: true; initial-value: 0; }
+@property --hover { syntax: "<number>"; inherits: true; initial-value: 0; }
+@property --look { syntax: "<number>"; inherits: true; initial-value: 0; }
 @property --swing { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
 @property --bob { syntax: "<length>"; inherits: false; initial-value: 0px; }
+
 .bear--washu { --fur: #b9875a; --fur-dark: #9a6d45; --fur-light: #ecd5b5; }
 .bear--cornell { --fur: #6e4a33; --fur-dark: #563827; --fur-light: #d9b48f; }
 .scene .bear__fur { fill: var(--fur); }
 .scene .bear__leg--far { fill: var(--fur-dark); }
 .scene .bear__light { fill: var(--fur-light); }
 .scene .bear__dark { fill: #1b1410; }
+.bear__shadow { fill: var(--ink); opacity: .12; }
 .bear__scarf { stroke: var(--ink); stroke-width: 2.2; }
 .bear--washu .bear__scarf { fill: #a51417; }
 .bear--washu .bear__stripe { fill: #007360; }
 .bear--cornell .bear__scarf { fill: #b31b1b; }
 .bear--cornell .bear__stripe { fill: #fff; }
 
-.bears { transform: translateX(290px); animation: bears-walk 30s linear infinite; }
+/* ---- Walking ---- */
+.bears { transform: translateX(290px); transition: --hover .3s ease; animation: bears-walk 30s linear infinite, bears-look 30s infinite; }
+.bears:not([data-pause="sit"]) { animation-name: bears-walk, none; }
 @keyframes bears-walk {
   0%        { transform: translateX(-60px); --walk: 1; }
   39%       { --walk: 1; }
@@ -712,35 +725,83 @@ details[open] .job__more svg { transform: rotate(180deg); }
   56%, 94%  { --walk: 1; }
   95%, 100% { transform: translateX(860px); --walk: 0; }
 }
-.bears:hover, .bears:hover * { animation-play-state: paused; }
-
 .bear__leg {
-  transform-box: fill-box; transform-origin: 50% 15%;
-  transform: rotate(calc(var(--swing) * var(--walk)));
+  transform-box: fill-box; transform-origin: 50% 0;
+  transform: rotate(calc(var(--swing) * var(--walk) * (1 - var(--hover))));
   animation: bear-step .4s ease-in-out infinite alternate;
 }
 .bear__leg--b { animation-delay: -.4s; }   /* diagonal pairs move opposite each other */
 .bear--cornell .bear__leg { animation-delay: -.15s; }
 .bear--cornell .bear__leg--b { animation-delay: -.55s; }
 @keyframes bear-step { from { --swing: -16deg; } to { --swing: 16deg; } }
-
-.bear__torso { transform: translateY(calc(var(--bob) * var(--walk))); animation: bear-bob .2s ease-in-out infinite alternate; }
+.bear__torso {
+  transform: translateY(calc(var(--bob) * var(--walk) * (1 - var(--hover))));
+  animation: bear-bob .2s ease-in-out infinite alternate;
+}
 @keyframes bear-bob { from { --bob: 0px; } to { --bob: -1.5px; } }
 
-.bear__head { transform-box: fill-box; transform-origin: 0% 80%; animation: bear-look 30s ease-in-out infinite; }
-@keyframes bear-look {
-  0%, 41%, 54%, 100% { transform: rotate(0); }
-  43%, 52%           { transform: rotate(-12deg); }
-}
-.bear__tail { transform-box: fill-box; transform-origin: 100% 50%; animation: bear-wag 30s infinite; }
-@keyframes bear-wag {
-  0%, 42%, 53%, 100% { transform: rotate(0); }
-  43.5%, 46.5%, 49.5% { transform: rotate(25deg); }
-  45%, 48%, 51%       { transform: rotate(-25deg); }
-}
+/* ---- Facing you: the profile head swaps for a front face on hover or during the sit ---- */
+.bear__face { opacity: max(var(--look), var(--hover)); }
+.bear__head { opacity: calc(1 - max(var(--look), var(--hover))); }
+.bear__ear { transform-box: fill-box; transform-origin: 50% 100%; }
+.bears:hover, .bears:hover * { animation-play-state: paused; }
+.bears:hover { --hover: 1; }
+.bears:hover .bear__ear { animation: bear-ear 1.4s ease-in-out infinite; animation-play-state: running; }
+.bears:hover .bear__ear + .bear__ear { animation-delay: -.7s; }
+@keyframes bear-ear { 0%, 70%, 100% { transform: rotate(0); } 78% { transform: rotate(-18deg); } 86% { transform: rotate(10deg); } }
 .bear__eye { transform-box: fill-box; transform-origin: center; animation: bear-blink 5s infinite; }
 .bear--cornell .bear__eye { animation-delay: -1.7s; }
 @keyframes bear-blink { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(.1); } }
+
+/* ---- Pause behaviors (all inside 40-55% of the walk) ---- */
+.bear__lift { transform-box: fill-box; transform-origin: 10% 85%; }   /* pivot at the rump */
+.bear__fold { transform-box: fill-box; transform-origin: 50% 100%; }  /* paws stay on the floor */
+.bear__head, .bear__face { transform-box: fill-box; transform-origin: 20% 80%; }
+.bear__tail { transform-box: fill-box; transform-origin: 100% 50%; }
+
+/* Sit: rump down, front up, both look at you with a head tilt and a tail wag. */
+@keyframes bears-look { 0%, 42%, 53%, 100% { --look: 0; } 43%, 52% { --look: 1; } }
+.bears[data-pause="sit"] .bear__lift { animation: bear-sit 30s ease-in-out infinite; }
+.bears[data-pause="sit"] .bear__fold--back { animation: bear-sit-back 30s ease-in-out infinite; }
+.bears[data-pause="sit"] .bear__fold--front { animation: bear-sit-front 30s ease-in-out infinite; }
+.bears[data-pause="sit"] .bear__face { animation: bear-tilt 30s ease-in-out infinite; }
+.bears[data-pause="sit"] .bear__tail { animation: bear-wag 30s infinite; }
+@keyframes bear-sit { 0%, 41%, 54%, 100% { transform: rotate(0); } 43%, 52% { transform: rotate(-18deg); } }
+@keyframes bear-sit-back { 0%, 41%, 54%, 100% { transform: scaleY(1); } 43%, 52% { transform: scaleY(.6); } }
+@keyframes bear-sit-front { 0%, 41%, 54%, 100% { transform: scaleY(1); } 43%, 52% { transform: scaleY(1.4); } }
+@keyframes bear-tilt { 0%, 43%, 52%, 100% { transform: rotate(0); } 45%, 50% { transform: rotate(28deg); } 47.5% { transform: rotate(16deg); } }
+@keyframes bear-wag {
+  0%, 43%, 52%, 100% { transform: rotate(0); }
+  44%, 47%, 50%      { transform: rotate(25deg); }
+  45.5%, 48.5%       { transform: rotate(-25deg); }
+}
+
+/* Sniff: WashU noses the floor; Cornell, not looking, bumps into it and WashU jolts forward. */
+.bears[data-pause="sniff"] .bear--washu .bear__head { animation: bear-sniff 30s ease-in-out infinite; }
+.bears[data-pause="sniff"] .bear--cornell .bear__pose { animation: bear-bump 30s ease-in-out infinite; }
+.bears[data-pause="sniff"] .bear--washu .bear__pose { animation: bear-jolt 30s ease-out infinite; }
+.bears[data-pause="sniff"] .bear--cornell .bear__head { animation: bear-glance 30s ease-in-out infinite; }
+@keyframes bear-sniff {
+  0%, 40.5%, 54%, 100% { transform: rotate(0); }
+  42%, 44%, 46%        { transform: rotate(30deg); }
+  43%, 45%             { transform: rotate(22deg); }
+  47.5%                { transform: rotate(-8deg); }
+  49%, 52%             { transform: rotate(4deg); }
+}
+@keyframes bear-glance { 0%, 41%, 46%, 49%, 54%, 100% { transform: rotate(0); } 42.5%, 45% { transform: rotate(-14deg); } }
+@keyframes bear-bump { 0%, 45.5%, 53%, 100% { transform: translateX(0); } 47% { transform: translateX(7px); } 48.5%, 51% { transform: translateX(-4px); } }
+@keyframes bear-jolt { 0%, 46.8%, 53%, 100% { transform: translateX(0); } 47.4% { transform: translateX(6px); } 49% { transform: translateX(4px); } }
+
+/* Stretch: a play bow, front down and rump up, then a shake of the tail. */
+.bears[data-pause="stretch"] .bear__lift { animation: bear-bow 30s ease-in-out infinite; }
+.bears[data-pause="stretch"] .bear__fold--front { animation: bear-bow-front 30s ease-in-out infinite; }
+.bears[data-pause="stretch"] .bear__tail { animation: bear-wag 30s infinite; }
+@keyframes bear-bow { 0%, 41%, 53%, 100% { transform: rotate(0); } 44%, 50% { transform: rotate(14deg); } }
+@keyframes bear-bow-front { 0%, 41%, 53%, 100% { transform: scaleY(1); } 44%, 50% { transform: scaleY(.62); } }
+
+/* Cornell sits and stretches a beat after WashU. Comes last, and is specific enough to beat the
+   animation shorthands above. */
+.bears .bear--cornell :is(.bear__lift, .bear__fold, .bear__face, .bear__tail) { animation-delay: .5s; }
 
 /* Desk loop (10s): the query is typed, the chart updates, the answer bubble checks off,
    then it all resets. Every piece shares the 10s cycle, so the percentages line up. */

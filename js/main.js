@@ -242,6 +242,22 @@
     });
   });
 
+  /* ---------- Bears: a different pause behavior each lap ----------
+     The 30s walk loop pauses mid-floor; data-pause picks what they do there (styles in
+     "Mascot bears" in styles.css). Re-picked as each lap starts, never the same twice in a row. */
+  var bears = document.querySelector('.bears');
+  if (bears) {
+    var behaviors = ['sit', 'sniff', 'stretch'];
+    var pick = function () {
+      var options = behaviors.filter(function (b) { return b !== bears.getAttribute('data-pause'); });
+      bears.setAttribute('data-pause', options[Math.floor(Math.random() * options.length)]);
+    };
+    pick();
+    bears.addEventListener('animationiteration', function (e) {
+      if (e.target === bears && e.animationName === 'bears-walk') pick();
+    });
+  }
+
   /* ---------- Footer year ---------- */
   var year = document.getElementById('year');
   if (year) year.textContent = String(new Date().getFullYear());
