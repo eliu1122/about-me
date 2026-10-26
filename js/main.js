@@ -242,7 +242,7 @@
     });
   });
 
-  /* ---------- Bears: a different pause behavior each lap ----------
+  /* ---------- Bears: a different pause behavior each lap, and taps ----------
      The 30s walk loop pauses mid-floor; data-pause picks what they do there (styles in
      "Mascot bears" in styles.css). Re-picked as each lap starts, never the same twice in a row. */
   var bears = document.querySelector('.bears');
@@ -255,6 +255,15 @@
     pick();
     bears.addEventListener('animationiteration', function (e) {
       if (e.target === bears && e.animationName === 'bears-walk') pick();
+    });
+
+    // A tap stops them and turns them toward you for a moment, like hover does on desktop.
+    var tapTimer;
+    bears.addEventListener('click', function () {
+      bears.classList.add('is-tapped');
+      clearTimeout(tapTimer);
+      tapTimer = setTimeout(function () { bears.classList.remove('is-tapped'); }, 2500);
+      if (window.posthog && window.posthog.capture) window.posthog.capture('bears_tapped');
     });
   }
 

@@ -692,7 +692,8 @@ details[open] .job__more svg { transform: rotate(180deg); }
 
    Registered custom properties drive the moving parts:
      --walk   1 while walking, 0 in the pause (part of the walk animation); scales the leg swing and bob
-     --hover  0 → 1 on hover (transitioned): stops the legs and turns the faces toward you
+     --hover  0 → 1 on hover, or for a moment after a tap (transitioned): stops the legs and turns
+              the faces toward you
      --look   1 while the pause behavior wants the bears facing you (the sit)
    Hover pauses all the 30s timelines together, so they stay in sync. Reduced motion parks the bears
    by the left desk leg. */
@@ -700,6 +701,7 @@ details[open] .job__more svg { transform: rotate(180deg); }
 @property --hover { syntax: "<number>"; inherits: true; initial-value: 0; }
 @property --look { syntax: "<number>"; inherits: true; initial-value: 0; }
 @property --swing { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+@property --knee { syntax: "<angle>"; inherits: true; initial-value: 0deg; }
 @property --bob { syntax: "<length>"; inherits: false; initial-value: 0px; }
 
 .bear--washu { --fur: #b9875a; --fur-dark: #9a6d45; --fur-light: #ecd5b5; }
@@ -734,15 +736,23 @@ details[open] .job__more svg { transform: rotate(180deg); }
   56%, 94%  { --walk: 1; }
   95%, 100% { transform: translateX(900px); --walk: 0; }
 }
+/* Each leg swings at the hip and bends at the knee (.bear__shin). A step: the planted paw pushes
+   back (0-50%), then the leg swings forward with the paw lifted clear of the floor (50-100%).
+   Both rotate around their own local origin, the hip and the knee. */
 .bear__leg {
-  transform-box: fill-box; transform-origin: 50% 0;
   transform: rotate(calc(var(--swing) * var(--walk) * (1 - var(--hover))));
-  animation: bear-step .4s ease-in-out infinite alternate;
+  animation: bear-step .8s ease-in-out infinite;
 }
+.bear__shin { transform: rotate(calc(var(--knee) * var(--walk) * (1 - var(--hover)))); }
 .bear__leg--b { animation-delay: -.4s; }   /* diagonal pairs move opposite each other */
 .bear--cornell .bear__leg { animation-delay: -.15s; }
 .bear--cornell .bear__leg--b { animation-delay: -.55s; }
-@keyframes bear-step { from { --swing: -16deg; } to { --swing: 16deg; } }
+@keyframes bear-step {
+  0%   { --swing: -14deg; --knee: 0deg; }
+  50%  { --swing: 14deg;  --knee: 0deg; }
+  75%  { --swing: 0deg;   --knee: -32deg; }
+  100% { --swing: -14deg; --knee: 0deg; }
+}
 .bear__torso {
   transform: translateY(calc(var(--bob) * var(--walk) * (1 - var(--hover))));
   animation: bear-bob .2s ease-in-out infinite alternate;
@@ -753,10 +763,18 @@ details[open] .job__more svg { transform: rotate(180deg); }
 .bear__face { opacity: max(var(--look), var(--hover)); }
 .bear__head { opacity: calc(1 - max(var(--look), var(--hover))); }
 .bear__ear { transform-box: fill-box; transform-origin: 50% 100%; }
-.bears:hover, .bears:hover * { animation-play-state: paused; }
-.bears:hover { --hover: 1; }
-.bears:hover .bear__ear { animation: bear-ear 1.4s ease-in-out infinite; animation-play-state: running; }
-.bears:hover .bear__ear + .bear__ear { animation-delay: -.7s; }
+/* A tap (main.js adds .is-tapped for a moment) does what hover does. Hover only counts on devices
+   that really hover; otherwise a tap leaves :hover stuck on and the bears frozen. */
+.bears.is-tapped, .bears.is-tapped * { animation-play-state: paused; }
+.bears.is-tapped { --hover: 1; }
+.bears.is-tapped .bear__ear { animation: bear-ear 1.4s ease-in-out infinite; animation-play-state: running; }
+.bears.is-tapped .bear__ear + .bear__ear { animation-delay: -.7s; }
+@media (hover: hover) {
+  .bears:hover, .bears:hover * { animation-play-state: paused; }
+  .bears:hover { --hover: 1; }
+  .bears:hover .bear__ear { animation: bear-ear 1.4s ease-in-out infinite; animation-play-state: running; }
+  .bears:hover .bear__ear + .bear__ear { animation-delay: -.7s; }
+}
 @keyframes bear-ear { 0%, 70%, 100% { transform: rotate(0); } 78% { transform: rotate(-18deg); } 86% { transform: rotate(10deg); } }
 .bear__eye { transform-box: fill-box; transform-origin: center; animation: bear-blink 5s infinite; }
 .bear--cornell .bear__eye { animation-delay: -1.7s; }
