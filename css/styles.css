@@ -710,17 +710,24 @@ details[open] .job__more svg { transform: rotate(180deg); }
 .scene .bear__farfur { fill: var(--fur-dark); }
 .scene .bear__light { fill: var(--fur-light); }
 .scene .bear__dark { fill: #1b1410; }
+.scene .bear__back { fill: var(--fur-dark); opacity: .55; }   /* darker along the back... */
+.scene .bear__belly { fill: var(--fur-light); opacity: .5; }  /* ...lighter chest and belly */
+.scene .bear__shine { fill: #fff; }                           /* eye highlight */
 .bear__shadow { fill: var(--ink); opacity: .12; }
 /* The bears are drawn at 1.3x, which would thicken every outline. These bring the body outline
    back to the scene's weight and keep small details (ears, snout, paws, tail) finer so they stay
    readable at this size. */
 .scene .bear .stroke { stroke-width: 2.4; }
 .scene .bear .thin { stroke-width: 1.5; }
+.scene .bear .hair { stroke-width: 1; }
 /* Scarf: drawn as round-capped strokes, an ink edge under the red so it matches the line art. */
 .bear__scarf-edge, .bear__scarf-red, .bear__scarf-stripe { fill: none; stroke-linecap: round; }
 .bear__scarf-edge { stroke: var(--ink); stroke-width: 9.5; }
 .bear__scarf-red { stroke: #b31b1b; stroke-width: 6.5; }
-.bear__scarf-stripe { stroke: #fff; stroke-width: 6.5; stroke-linecap: butt; stroke-dasharray: 2.5 6; stroke-dashoffset: -4; }
+.bear__scarf-stripe { stroke: #fff; stroke-width: 6.5; stroke-linecap: butt; stroke-dasharray: 1.3 3.7; stroke-dashoffset: -2; }
+/* The scarf tail flutters behind, swinging from where it leaves the neck. */
+.bear__scarf-tail { animation: scarf-flutter .7s ease-in-out infinite alternate; }
+@keyframes scarf-flutter { from { transform: rotate(-7deg); } to { transform: rotate(6deg); } }
 .bear__cap-base { fill: #1b1410; stroke: var(--ink); stroke-width: 1.6; stroke-linejoin: round; }
 .bear__cap-board { fill: #a51417; stroke: var(--ink); stroke-width: 2; stroke-linejoin: round; }
 .bear__tassel { fill: none; stroke: #007360; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
@@ -823,7 +830,7 @@ details[open] .job__more svg { transform: rotate(180deg); }
 .bears[data-pause="stretch"] .bear__lift { animation: bear-bow 30s ease-in-out infinite; }
 .bears[data-pause="stretch"] .bear__fold--front { animation: bear-bow-front 30s ease-in-out infinite; }
 .bears[data-pause="stretch"] .bear__tail { animation: bear-wag 30s infinite; }
-@keyframes bear-bow { 0%, 41%, 53%, 100% { transform: rotate(0); } 44%, 50% { transform: rotate(14deg); } }
+@keyframes bear-bow { 0%, 41%, 53%, 100% { transform: rotate(0); } 44%, 50% { transform: rotate(11deg); } }
 @keyframes bear-bow-front { 0%, 41%, 53%, 100% { transform: scaleY(1); } 44%, 50% { transform: scaleY(.62); } }
 
 /* Cornell sits and stretches a beat after WashU. Comes last, and is specific enough to beat the
