@@ -17,3 +17,17 @@ Not yet used:
 | --- | --- |
 | `og-card.png` | 1200×630 link preview; uncomment the `og:image` tag in `index.html` |
 | `bear-run/gameplay.mp4` | Bear Run, which links to itch.io for now |
+
+## Adding media
+
+Drop the file in `media/` and add a figure to `index.html` (`<img>` works the same way):
+
+```html
+<!-- mp4s under ~20 MB; embed anything bigger (Slides, YouTube, Loom, PDF) -->
+<figure class="media">
+  <video src="media/project/demo.mp4" controls playsinline poster="media/project/poster.jpg"></video>
+</figure>
+<figure class="media media--embed">
+  <iframe src="EMBED_URL" title="Walkthrough" allowfullscreen loading="lazy"></iframe>
+</figure>
+```
