@@ -698,6 +698,7 @@ details[open] .job__more svg { transform: rotate(180deg); }
    Hover pauses all the 30s timelines together, so they stay in sync. Reduced motion parks the bears
    by the left desk leg. */
 @property --walk { syntax: "<number>"; inherits: true; initial-value: 0; }
+@property --creep { syntax: "<number>"; inherits: true; initial-value: 0; }
 @property --hover { syntax: "<number>"; inherits: true; initial-value: 0; }
 @property --look { syntax: "<number>"; inherits: true; initial-value: 0; }
 @property --swing { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
@@ -734,23 +735,23 @@ details[open] .job__more svg { transform: rotate(180deg); }
 .bear__tassel-end { fill: #007360; }
 
 /* ---- Walking ---- */
-.bears { transform: translateX(335px); transition: --hover .3s ease; animation: bears-walk 30s linear infinite, bears-look 30s infinite; }
+.bears { transform: translateX(350px); transition: --hover .3s ease; animation: bears-walk 30s linear infinite, bears-look 30s infinite; }
 .bears:not([data-pause="sit"]) { animation-name: bears-walk, none; }
 @keyframes bears-walk {
   0%        { transform: translateX(-60px); --walk: 1; }
   39%       { --walk: 1; }
-  40%, 55%  { transform: translateX(400px); --walk: 0; }
+  40%, 55%  { transform: translateX(420px); --walk: 0; }
   56%, 94%  { --walk: 1; }
-  95%, 100% { transform: translateX(900px); --walk: 0; }
+  95%, 100% { transform: translateX(925px); --walk: 0; }
 }
 /* Each leg swings at the hip and bends at the knee (.bear__shin). A step: the planted paw pushes
    back (0-50%), then the leg swings forward with the paw lifted clear of the floor (50-100%).
    Both rotate around their own local origin, the hip and the knee. */
 .bear__leg {
-  transform: rotate(calc(var(--swing) * var(--walk) * (1 - var(--hover))));
+  transform: rotate(calc(var(--swing) * max(var(--walk), var(--creep)) * (1 - var(--hover))));
   animation: bear-step .8s ease-in-out infinite;
 }
-.bear__shin { transform: rotate(calc(var(--knee) * var(--walk) * (1 - var(--hover)))); }
+.bear__shin { transform: rotate(calc(var(--knee) * max(var(--walk), var(--creep)) * (1 - var(--hover)))); }
 .bear__leg--b { animation-delay: -.4s; }   /* diagonal pairs move opposite each other */
 .bear--cornell .bear__leg { animation-delay: -.15s; }
 .bear--cornell .bear__leg--b { animation-delay: -.55s; }
@@ -761,7 +762,7 @@ details[open] .job__more svg { transform: rotate(180deg); }
   100% { --swing: -14deg; --knee: 0deg; }
 }
 .bear__torso {
-  transform: translateY(calc(var(--bob) * var(--walk) * (1 - var(--hover))));
+  transform: translateY(calc(var(--bob) * max(var(--walk), var(--creep)) * (1 - var(--hover))));
   animation: bear-bob .2s ease-in-out infinite alternate;
 }
 @keyframes bear-bob { from { --bob: 0px; } to { --bob: -1.5px; } }
@@ -810,9 +811,10 @@ details[open] .job__more svg { transform: rotate(180deg); }
   45.5%, 48.5%       { transform: rotate(-25deg); }
 }
 
-/* Sniff: WashU noses the floor; Cornell, not looking, bumps into it and WashU jolts forward. */
+/* Sniff: WashU noses the floor; Cornell, looking away, walks up and bumps into it, WashU jolts
+   forward, and Cornell backs off to its spot. --creep keeps its legs stepping while it moves. */
 .bears[data-pause="sniff"] .bear--washu .bear__head { animation: bear-sniff 30s ease-in-out infinite; }
-.bears[data-pause="sniff"] .bear--cornell .bear__pose { animation: bear-bump 30s ease-in-out infinite; }
+.bears[data-pause="sniff"] .bear--cornell :is(.bear__pose, .bear__shadow) { animation: bear-bump 30s ease-in-out infinite; }
 .bears[data-pause="sniff"] .bear--washu .bear__pose { animation: bear-jolt 30s ease-out infinite; }
 .bears[data-pause="sniff"] .bear--cornell .bear__head { animation: bear-glance 30s ease-in-out infinite; }
 @keyframes bear-sniff {
@@ -822,8 +824,14 @@ details[open] .job__more svg { transform: rotate(180deg); }
   47.5%                { transform: rotate(-8deg); }
   49%, 52%             { transform: rotate(4deg); }
 }
-@keyframes bear-glance { 0%, 41%, 46%, 49%, 54%, 100% { transform: rotate(0); } 42.5%, 45% { transform: rotate(-14deg); } }
-@keyframes bear-bump { 0%, 45.5%, 53%, 100% { transform: translateX(0); } 47% { transform: translateX(7px); } 48.5%, 51% { transform: translateX(-4px); } }
+@keyframes bear-glance { 0%, 41%, 47%, 49%, 54%, 100% { transform: rotate(0); } 42.5%, 46% { transform: rotate(-14deg); } }
+@keyframes bear-bump {
+  0%, 43%, 53%, 100% { transform: translateX(0); --creep: 0; }
+  43.2%, 46.8%       { --creep: 1; }
+  47%                { transform: translateX(38px); --creep: 0; }
+  48.5%, 49.5%       { transform: translateX(34px); --creep: 0; }
+  49.7%, 52.8%       { --creep: 1; }
+}
 @keyframes bear-jolt { 0%, 46.8%, 53%, 100% { transform: translateX(0); } 47.4% { transform: translateX(6px); } 49% { transform: translateX(4px); } }
 
 /* Stretch: a play bow, front down and rump up, then a shake of the tail. */
