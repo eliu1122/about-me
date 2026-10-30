@@ -683,7 +683,9 @@ details[open] .job__more svg { transform: rotate(180deg); }
 .glow { animation: glow 5s ease-in-out infinite; }
 @keyframes glow { 0%, 100% { opacity: .45; } 50% { opacity: .72; } }
 
-/* Mascot bears: WashU (brown, in a red graduation cap with a green tassel, since that's where Eric
+/* Mascot bears (hidden for now: the group in index.html has display="none").
+
+   WashU (brown, in a red graduation cap with a green tassel, since that's where Eric
    graduated) and Cornell (Touchdown is a black bear, so it's the darker one; Big Red striped scarf). They walk the floor on a shared 30s loop: in from
    the left (0-40%), a pause mid-floor (40-55%), out to the right (55-95%), then a beat offscreen.
 
