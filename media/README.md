@@ -10,12 +10,12 @@
 | `manim-lesson-builder/history-lesson.mp4`, `history-poster.jpg` | Manim history lesson and its poster frame |
 | `sec-simplifier/footnote-app.png` | Footnote app screenshot |
 | `Yun_Chung_(Eric)_Liu_Resume.pdf` | Résumé link in Contact. Replace the file in place and bump "Updated …" in `index.html` |
+| `og-card.png` | 1200×630 link preview for Slack, LinkedIn and iMessage. Re-render it if the headline changes |
 
 Not yet used:
 
 | File | Where it would show |
 | --- | --- |
-| `og-card.png` | 1200×630 link preview; uncomment the `og:image` tag in `index.html` |
 | `bear-run/gameplay.mp4` | Bear Run, which links to itch.io for now |
 
 ## Adding media
