@@ -543,11 +543,12 @@ h1, h2, h3, h4 {
 
 .job h3 { font-size: 1.35rem; margin-bottom: .3rem; color: var(--ink); transition: color .2s; }
 .job__role { color: var(--mint); font-weight: 500; font-size: .97rem; display: block; }
-.job__outcome { color: var(--muted); font-size: .9rem; display: block; margin-top: .2rem; }  /* the result, visible while collapsed */
+.job__blurb { color: var(--muted); font-size: .95rem; line-height: 1.55; display: block; max-width: 62ch; margin-top: .45rem; }  /* summary while collapsed */
+.job__body[open] .job__blurb { display: none; }  /* the full text covers it once open */
 .job__body { min-width: 0; }
 .job__body p { margin: .9rem 0 0; color: var(--ink-2); max-width: 66ch; }
 
-/* Collapsed by default: the summary row is company, role, and nothing else. */
+/* Collapsed by default: the summary row is the title, role, and a short summary. */
 .job__summary {
   display: flex; align-items: baseline; justify-content: space-between;
   gap: 1rem 1.5rem; flex-wrap: wrap; cursor: pointer;
@@ -556,7 +557,7 @@ h1, h2, h3, h4 {
 .job__summary::-webkit-details-marker { display: none; }
 .job__summary:hover h3 { color: var(--mint); }
 .job__summary:focus-visible { outline: 2.5px solid var(--mint); outline-offset: 4px; border-radius: 6px; }
-.job__titles { min-width: 0; }
+.job__titles { min-width: 0; flex: 1 1 24rem; }  /* keeps "Read more" beside it until the row is narrow */
 
 .job__more {
   display: inline-flex; align-items: center; gap: .45rem; white-space: nowrap;
