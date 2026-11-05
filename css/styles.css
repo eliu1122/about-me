@@ -543,6 +543,7 @@ h1, h2, h3, h4 {
 
 .job h3 { font-size: 1.35rem; margin-bottom: .3rem; color: var(--ink); transition: color .2s; }
 .job__role { color: var(--mint); font-weight: 500; font-size: .97rem; display: block; }
+.job__outcome { color: var(--muted); font-size: .9rem; display: block; margin-top: .2rem; }  /* the result, visible while collapsed */
 .job__body { min-width: 0; }
 .job__body p { margin: .9rem 0 0; color: var(--ink-2); max-width: 66ch; }
 
