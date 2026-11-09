@@ -579,6 +579,7 @@ details[open] .job__more svg { transform: rotate(180deg); }
   border-radius: var(--radius);
   animation: detail-in .32s cubic-bezier(.2, .7, .3, 1) both;
 }
+.section--tint .job__detail { background: var(--paper); }
 @keyframes detail-in {
   from { opacity: 0; transform: translateY(-6px); }
   to { opacity: 1; transform: none; }
