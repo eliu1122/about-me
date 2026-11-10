@@ -542,7 +542,7 @@ h1, h2, h3, h4 {
 .job__when .status { margin-top: .1rem; padding: .12rem .65rem; font-size: .66rem; }
 
 .job h3 { font-size: 1.35rem; margin-bottom: .3rem; color: var(--ink); transition: color .2s; }
-.job__role { color: var(--mint); font-weight: 500; font-size: .97rem; display: block; }
+.job__role { color: var(--ink-2); font-weight: 500; font-size: .97rem; display: block; }
 .job__blurb { color: var(--muted); font-size: .95rem; line-height: 1.55; display: block; max-width: 62ch; margin-top: .45rem; }  /* summary while collapsed */
 .job__body[open] .job__blurb { display: none; }  /* the full text covers it once open */
 .job__body { min-width: 0; }
