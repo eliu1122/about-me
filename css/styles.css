@@ -588,7 +588,7 @@ details[open] .job__more svg { transform: rotate(180deg); }
 .job__wins li { position: relative; padding-left: 1.4rem; color: var(--ink-2); font-size: .96rem; }
 .job__wins li::before {
   content: ""; position: absolute; left: 0; top: .62em; width: 7px; height: 7px;
-  border-radius: 2px; background: var(--mint-soft); border: 1.5px solid var(--mint);
+  border-radius: 2px; background: var(--card); border: 1.5px solid var(--muted);
 }
 
 /* ---------- Two lists, two treatments ---------- */
