@@ -336,7 +336,7 @@ h1, h2, h3, h4 {
 
 /* A tall app screenshot: cap the width so it reads as the narrow single-column app it is,
    and let it scroll inside a fixed-height frame instead of running 900px down the page. */
-.media--app { max-width: 480px; }
+.media--app { max-width: 480px; margin-inline: auto; }
 .media--app__scroll { max-height: 560px; overflow-y: auto; overscroll-behavior: contain; }
 .media--app__scroll img { display: block; }
 
