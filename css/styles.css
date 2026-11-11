@@ -370,7 +370,7 @@ h1, h2, h3, h4 {
 /* A self-built card for the itch.io game link — cover image + title + byline we control,
    rather than itch's auto-generated widget (see the comment above its markup). */
 .game-card {
-  display: flex; align-items: stretch; gap: 1rem; max-width: 420px;
+  display: flex; align-items: stretch; gap: 1rem; max-width: 420px; width: 100%; margin-inline: auto;
   text-decoration: none; color: var(--ink);
   background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
   overflow: hidden; transition: border-color .2s, box-shadow .2s, transform .2s;
