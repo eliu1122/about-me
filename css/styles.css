@@ -261,8 +261,8 @@ h1, h2, h3, h4 {
 
 /* ---------- Media ---------- */
 
-.media-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+.media-grid {   /* one centered item per project, so a single full-width column */
+  display: grid; grid-template-columns: minmax(0, 1fr);
   gap: 1.25rem; margin-top: 2.25rem;
 }
 
