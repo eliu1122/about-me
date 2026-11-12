@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Caseline PRD — Yun-Chung (Eric) Liu</title>
+<meta name="description" content="The product requirements document for Caseline: grounded answers about US immigration cases, built only from official USCIS and State Department guidance. Problem, target users, v1 vs. v2 scope, requirements, and success metrics.">
+
+<meta property="og:title" content="Caseline PRD — Yun-Chung (Eric) Liu">
+<meta property="og:description" content="Problem, target users, v1 vs. v2 scope, requirements, and success metrics for Caseline.">
+<meta property="og:type" content="article">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2317ac78'/%3E%3Ctext x='16' y='23' font-family='sans-serif' font-size='19' font-weight='700' fill='white' text-anchor='middle'%3EE%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+
+<!-- Set the theme before first paint so dark-mode visitors never see a white flash. -->
+<script>
+  (function () {
+    try {
+      var saved = localStorage.getItem('theme');
+      var dark = saved ? saved === 'dark'
+        : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+    } catch (e) { /* leave the default */ }
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="nav">
+  <div class="wrap nav__inner">
+    <a class="brand" href="index.html"><span class="brand__dot"></span><span class="brand__name">Yun-Chung (Eric) Liu</span></a>
+
+    <ul class="nav__links" id="navLinks">
+      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="index.html#experience">Experience</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+
+    <button class="icon-btn nav__toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M4 7h16M4 12h16M4 17h16"/>
+      </svg>
+    </button>
+
+    <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode">
+      <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
+      </svg>
+      <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+        <circle cx="12" cy="12" r="4.2"/>
+        <path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+<article class="wrap doc">
+  <a class="doc__back" href="index.html#projects">&larr; Back to Projects</a>
+
+  <h1>Caseline</h1>
+
+  <p class="lede">
+    Grounded answers about a US immigration case: paste a case status or a notice, or ask a
+    plain-English question about a form, and get an answer built only from official USCIS and
+    State Department guidance.
+  </p>
+
+  <h2>1. Problem</h2>
+  <p>
+    Case trackers from USCIS, NVC/CEAC and third-party apps tell applicants <em>what</em>
+    their status is (&ldquo;Request for Evidence Was Sent,&rdquo; &ldquo;Administrative
+    Processing,&rdquo; a 221(g) refusal) but not what it means or what to do next. So applicants
+    ask forums and chatbots, can&rsquo;t tell which answers come from official guidance, and either
+    act on a wrong answer or pay for a consultation to check a simple one.
+  </p>
+  <p>
+    <strong>Evidence:</strong> <em>to collect.</em> Plan: interview 6&ndash;8 people who are
+    applying now or applied recently (family-based, employment-based, consular processing) about
+    the last time a status or notice confused them and what they did about it.
+  </p>
+
+  <h2>2. Target users</h2>
+  <p>
+    People going through a US immigration process themselves, or helping a family member through
+    one, who track the case on USCIS or CEAC and need to understand each step without a lawyer
+    on call.
+  </p>
+
+  <h2>3. Goal</h2>
+  <p>
+    A user can understand what their current status or notice means, and what official guidance
+    says usually happens next, without searching through uscis.gov, the Policy Manual or the
+    Foreign Affairs Manual themselves.
+  </p>
+
+  <h2>4. Scope</h2>
+  <div class="doc__table-wrap">
+    <table>
+      <thead>
+        <tr><th>v1</th><th>v2 (later)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>One form or process per question</td><td>Questions that span several processes (e.g. adjustment vs. consular processing)</td></tr>
+        <tr><td>Family-based path: I-130, I-485, I-864, I-765/I-131, NVC and DS-260</td><td>Employment-based, naturalization (N-400), humanitarian</td></tr>
+        <tr><td>Explain a pasted status line or notice text</td><td>Upload a scanned notice and read it with OCR</td></tr>
+        <tr><td>Form instructions, USCIS Policy Manual, NVC/CEAC help pages, 9 FAM, the Visa Bulletin</td><td>8 CFR and the INA; alerts when a source the user relied on changes</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    <strong>Out of scope for both:</strong> legal advice, predicting the outcome or timing of a
+    specific case, checking a live case status on the user&rsquo;s behalf, and any source other
+    than official government guidance.
+  </p>
+
+  <h2>5. Requirements (v1)</h2>
+  <ol>
+    <li>The user picks a form or process, or pastes a status line or notice text, and asks a question in plain English.</li>
+    <li>The answer is written only from passages retrieved from the indexed official sources.</li>
+    <li>Every quote is checked against the source before it is shown, and links back to the page and section it came from, with the date that page was fetched.</li>
+    <li>Fee schedules and Visa Bulletin charts are read as tables, so a question about a fee or a cutoff date is answered from the table&rsquo;s values.</li>
+    <li>If official guidance doesn&rsquo;t cover the question, or the question is about the outcome of the user&rsquo;s own case, the product says so and suggests asking an accredited representative or attorney instead of guessing.</li>
+    <li>Receipt numbers, case numbers and A-numbers are never stored, and pasted notice text is processed only to answer the question.</li>
+    <li>Sources are re-fetched on a schedule, and an answer built from a page older than that schedule is flagged.</li>
+  </ol>
+
+  <h2>6. Success metrics</h2>
+  <p>
+    All five are scored on a reviewed evaluation set built from real status messages, notice
+    language and common questions, and tracked against a saved baseline so a change that makes
+    things worse is visible.
+  </p>
+  <div class="doc__table-wrap">
+    <table>
+      <thead>
+        <tr><th>Metric</th><th>What it asks</th><th>Bar</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Answer accuracy</th>
+          <td>Is the answer right, judged against the official source?</td>
+          <td>Improves on the baseline</td>
+        </tr>
+        <tr>
+          <th>Citation accuracy</th>
+          <td>Does the cited passage exist and support the answer?</td>
+          <td>100%</td>
+        </tr>
+        <tr>
+          <th>Abstention</th>
+          <td>Does it decline questions guidance can&rsquo;t answer, and every question about a specific case&rsquo;s outcome?</td>
+          <td>Improves on the baseline; 100% on case-outcome questions</td>
+        </tr>
+        <tr>
+          <th>Outside content</th>
+          <td>Does anything in the answer come from outside the official sources?</td>
+          <td>Zero</td>
+        </tr>
+        <tr>
+          <th>Freshness</th>
+          <td>Is every cited source within its re-fetch window?</td>
+          <td>100%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>7. Risks and open questions</h2>
+  <ul>
+    <li>The line between explaining guidance and giving legal advice has to hold in every answer, including how next steps are worded.</li>
+    <li>A wrong answer about a deadline (an RFE response window, a 221(g) document request) can cost someone their case, so declining has to be reliable, not just possible.</li>
+    <li>Guidance and fees change without much notice; an answer that was right last month can be wrong now.</li>
+    <li>Status messages are short and generic, so the same text can mean different things in different processes; the product has to ask which form the case is for.</li>
+    <li>Checking that a quote is genuine does not prove it supports the claim built on it.</li>
+    <li>Open: should v1 work in languages other than English, given who the users are?</li>
+  </ul>
+</article>
+
+</main>
+
+<footer class="footer wrap">
+  <span>&copy; <span id="year">2026</span> Yun-Chung (Eric) Liu &middot; New York, NY</span>
+  <span>Built by hand. No frameworks were harmed.</span>
+</footer>
+
+<script src="js/analytics.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
