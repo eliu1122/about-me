@@ -4,11 +4,11 @@
    ========================================================= */
 
 :root {
-  /* Mint + gray */
-  --mint:        #17ac78;
-  --mint-bright: #2fd39a;
-  --mint-soft:   #c9efdf;
-  --mint-wash:   #e9f7f1;
+  /* Green + gray. --mint is deep enough to pass contrast as text on paper and white. */
+  --mint:        #0f7d57;
+  --mint-bright: #17a571;
+  --mint-soft:   #cfe8dc;
+  --mint-wash:   #edf5f0;
 
   --ink:         #142019;
   --ink-2:       #2f423a;
