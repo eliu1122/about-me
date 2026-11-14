@@ -116,6 +116,58 @@
 
     <!-- ---------- Desk scene (hand-built SVG; colors follow the CSS tokens) ---------- -->
     <div class="hero__art">
+      <!-- Project slideshow: one slide per project, each opening its card below.
+           Rotates every 6s, pauses on hover/focus, and stays put for reduced motion
+           (see "Hero slideshow" in styles.css and main.js). -->
+      <div class="slides" role="region" aria-roledescription="carousel" aria-label="Projects">
+        <div class="slides__track">
+          <a class="slide is-active" href="#manim-lesson-builder" data-open="manim-lesson-builder">
+            <span class="slide__frame"><img src="media/manim-lesson-builder/history-poster.jpg" alt="The title frame of a generated history lesson on the Roman Republic" width="1280" height="720"></span>
+            <span class="slide__text">
+              <span class="slide__title">Manim Lesson Builder</span>
+              <span class="slide__role">Plain-language topics into narrated lesson videos</span>
+            </span>
+          </a>
+          <a class="slide" href="#sec-simplifier" data-open="sec-simplifier" aria-hidden="true" tabindex="-1">
+            <span class="slide__frame slide__frame--top"><img src="media/sec-simplifier/footnote-app.png" alt="The Footnote app answering a question from SEC filings" width="900" height="1938" loading="lazy"></span>
+            <span class="slide__text">
+              <span class="slide__title">Footnote</span>
+              <span class="slide__role">Grounded Q&amp;A over SEC EDGAR filings</span>
+            </span>
+          </a>
+          <a class="slide" href="#fridayflicks" data-open="fridayflicks" aria-hidden="true" tabindex="-1">
+            <span class="slide__frame slide__frame--fit"><img src="media/fridayflicks.png" alt="The FridayFlicks Android app scoring a spoken review" width="462" height="838" loading="lazy"></span>
+            <span class="slide__text">
+              <span class="slide__title">FridayFlicks</span>
+              <span class="slide__role">Spoken movie reviews, scored on-device</span>
+            </span>
+          </a>
+          <a class="slide" href="#bear-run" data-open="bear-run" aria-hidden="true" tabindex="-1">
+            <span class="slide__frame slide__frame--fit"><img src="https://img.itch.zone/aW1nLzE5NjExNTc5LnBuZw==/347x500/4NJGrq.png" alt="Run Bear Run! cover art" width="347" height="500" loading="lazy"></span>
+            <span class="slide__text">
+              <span class="slide__title">WashU Bear Run</span>
+              <span class="slide__role">Unity arcade game, concept to deployment</span>
+            </span>
+          </a>
+        </div>
+        <div class="slides__controls">
+          <button class="slides__btn" type="button" data-step="-1" aria-label="Previous project">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
+          </button>
+          <div class="slides__dots" role="group" aria-label="Choose a project">
+            <button type="button" class="is-active" aria-label="Manim Lesson Builder" aria-current="true"></button>
+            <button type="button" aria-label="Footnote"></button>
+            <button type="button" aria-label="FridayFlicks"></button>
+            <button type="button" aria-label="WashU Bear Run"></button>
+          </div>
+          <button class="slides__btn" type="button" data-step="1" aria-label="Next project">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Desk illustration, set aside for the slideshow: delete hidden to bring it back. -->
+      <div class="hero__desk" hidden>
       <svg class="scene" viewBox="0 0 720 560" role="img" aria-labelledby="sceneTitle">
         <title id="sceneTitle">Illustration of a desk: a monitor showing a dashboard, a laptop, a mug of coffee, a plant, and floating cards for a filing and a cited answer.</title>
 
@@ -325,6 +377,7 @@
         <path class="fill-card stroke" d="M176 390 L228 390 L220 430 L184 430 Z"/>
         <ellipse class="fill-mint stroke thin" cx="202" cy="390" rx="26" ry="7"/>
       </svg>
+      </div>
     </div>
 
   </div>
