@@ -667,7 +667,7 @@ details[open] .job__more svg { transform: rotate(180deg); }
 /* ---------- Hero slideshow ----------
    One project per slide, stacked in a grid cell so they cross-fade in place. Each frame is a
    fixed 16:10 window: wide images fill it, tall app screenshots show their top, and phone-shaped
-   images sit whole on a light ground. It moves only on the arrows and dots (main.js). */
+   images sit whole on a light ground. main.js advances it every 6s. */
 .slides { width: 100%; max-width: 520px; margin-inline: auto; }
 .slides__track { display: grid; }
 .slide {
