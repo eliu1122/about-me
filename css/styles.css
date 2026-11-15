@@ -667,7 +667,7 @@ details[open] .job__more svg { transform: rotate(180deg); }
 /* ---------- Hero slideshow ----------
    One project per slide, stacked in a grid cell so they cross-fade in place. Each frame is a
    fixed 16:10 window: wide images fill it, tall app screenshots show their top, and phone-shaped
-   images sit whole on a light ground. main.js advances it every 6s. */
+   images sit whole on a light ground. It moves only on the arrows and dots (main.js). */
 .slides { width: 100%; max-width: 520px; margin-inline: auto; }
 .slides__track { display: grid; }
 .slide {
@@ -691,17 +691,19 @@ details[open] .job__more svg { transform: rotate(180deg); }
 
 .slides__controls { display: flex; align-items: center; justify-content: center; gap: .75rem; margin-top: 1rem; }
 .slides__btn {
-  display: grid; place-items: center; width: 34px; height: 34px; padding: 0; cursor: pointer;
+  display: grid; place-items: center; width: 40px; height: 40px; padding: 0; cursor: pointer;
   border: 1px solid var(--line-strong); border-radius: 50%; background: var(--card); color: var(--ink-2);
 }
 .slides__btn:hover { border-color: var(--ink); color: var(--ink); }
 .slides__btn svg { width: 16px; height: 16px; }
-.slides__dots { display: flex; gap: .4rem; }
+.slides__dots { display: flex; }
 .slides__dots button {
-  width: 8px; height: 8px; padding: 0; border: 0; border-radius: 999px; cursor: pointer;
-  background: var(--line-strong); transition: width .25s ease, background .25s ease;
+  /* 8px dot, 24px tap area: the padding is clickable but unpainted. */
+  width: 8px; height: 8px; box-sizing: content-box; padding: 8px; background-clip: content-box;
+  border: 0; border-radius: 999px; cursor: pointer;
+  background-color: var(--line-strong); transition: width .25s ease, background-color .25s ease;
 }
-.slides__dots button.is-active { width: 22px; background: var(--ink); }
+.slides__dots button.is-active { width: 22px; background-color: var(--ink); }
 
 /* ---------- Desk scene ---------- */
 

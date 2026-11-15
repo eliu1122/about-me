@@ -243,14 +243,12 @@
   });
 
   /* ---------- Hero slideshow: one project per slide ----------
-     Advances every 6s; pauses while hovered or focused, while the tab is hidden, and for
-     reduced motion. Clicking a slide opens that project's card (via data-open above). */
+     Moves only when the visitor asks (arrows or dots), never on a timer.
+     Clicking a slide opens that project's card (via data-open above). */
   document.querySelectorAll('.slides').forEach(function (show) {
     var slides = show.querySelectorAll('.slide');
     var dots = show.querySelectorAll('.slides__dots button');
     var current = 0;
-    var timer = null;
-    var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     var go = function (i) {
       current = (i + slides.length) % slides.length;
@@ -265,16 +263,11 @@
         if (n === current) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current');
       });
     };
-    var stop = function () { clearInterval(timer); timer = null; };
-    var start = function () {
-      if (still || timer || document.hidden) return;
-      timer = setInterval(function () { go(current + 1); }, 6000);
-    };
 
     show.querySelectorAll('[data-step]').forEach(function (btn) {
-      btn.addEventListener('click', function () { stop(); go(current + Number(btn.getAttribute('data-step'))); });
+      btn.addEventListener('click', function () { go(current + Number(btn.getAttribute('data-step'))); });
     });
-    dots.forEach(function (d, n) { d.addEventListener('click', function () { stop(); go(n); }); });
+    dots.forEach(function (d, n) { d.addEventListener('click', function () { go(n); }); });
     slides.forEach(function (s) {
       s.addEventListener('click', function () {
         if (window.posthog && window.posthog.capture) {
@@ -282,13 +275,6 @@
         }
       });
     });
-
-    show.addEventListener('mouseenter', stop);
-    show.addEventListener('mouseleave', start);
-    show.addEventListener('focusin', stop);
-    show.addEventListener('focusout', start);
-    document.addEventListener('visibilitychange', function () { if (document.hidden) stop(); else start(); });
-    start();
   });
 
   /* ---------- Bears: a different pause behavior each lap, and taps ----------
