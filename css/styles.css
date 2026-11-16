@@ -135,11 +135,6 @@ h1, h2, h3, h4 {
   text-decoration: none; letter-spacing: -.02em;
   display: flex; align-items: center; gap: .6rem; margin-right: auto;
 }
-/* Monogram matching the favicon. (A plain green dot read as an "online" status light.) */
-.brand__mark {
-  display: grid; place-items: center; width: 24px; height: 24px; flex: none;
-  border-radius: 6px; background: var(--mint); color: #fff; font-size: .82rem; letter-spacing: 0;
-}
 /* Same mark as the active nav link, shown only at the very top of the page. */
 .brand__name { position: relative; }
 .brand__name::after {
