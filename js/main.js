@@ -47,11 +47,14 @@
     });
   }
 
-  /* ---------- Nav hairline and scroll cue as the page scrolls ---------- */
+  /* ---------- Nav hairline, nav name, and scroll cue as the page scrolls ----------
+     The nav's name shows only once the hero's big name has scrolled up under the nav. */
   var nav = document.getElementById('nav');
+  var heroName = document.querySelector('.hero h1');
   var scrollCue = document.getElementById('scrollCue');
   var onScroll = function () {
     if (nav) nav.classList.toggle('is-stuck', window.scrollY > 8);
+    if (nav && heroName) nav.classList.toggle('name-in-view', heroName.getBoundingClientRect().bottom > nav.offsetHeight);
     if (scrollCue) scrollCue.classList.toggle('is-hidden', window.scrollY > 8);
   };
   window.addEventListener('scroll', onScroll, { passive: true });
