@@ -139,15 +139,6 @@ h1, h2, h3, h4 {
 /* Hidden while the hero's big name is on screen, so the name isn't shown twice; main.js sets
    .name-in-view. Without JS the class never lands and the name just stays. */
 .nav.name-in-view .brand { opacity: 0; visibility: hidden; }
-/* Same mark as the active nav link, shown only at the very top of the page. */
-.brand__name { position: relative; }
-.brand__name::after {
-  content: ""; position: absolute; left: 50%; bottom: -8px;
-  width: 18px; height: 2px; margin-left: -9px;
-  background: var(--mint); border-radius: 2px;
-  opacity: 0; transition: opacity .25s ease;
-}
-.nav:not(.is-stuck) .brand__name::after { opacity: 1; }
 
 .nav__links { display: flex; gap: .35rem; list-style: none; margin: 0; padding: 0; }
 .nav__links a {
