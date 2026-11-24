@@ -554,7 +554,7 @@ h1, h2, h3, h4 {
 .job__summary {
   display: flex; align-items: baseline; justify-content: space-between;
   gap: 1rem 1.5rem; flex-wrap: wrap; cursor: pointer;
-  margin: -.6rem -.85rem; padding: .6rem .85rem; border-radius: 12px; list-style: none;
+  margin: -.6rem -.85rem; padding: .6rem .85rem; border-radius: 22px; list-style: none;
   transition: background .2s;
 }
 .job__summary:hover { background: var(--mint-wash); }  /* the whole row is the button */
