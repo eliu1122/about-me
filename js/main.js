@@ -48,17 +48,40 @@
   }
 
   /* ---------- Nav hairline, nav name, and scroll cue as the page scrolls ----------
-     The nav's name shows only once the hero's big name has scrolled up under the nav. */
+     The nav's name shows only once the hero's big name has scrolled up under the nav.
+     Observers instead of a scroll listener, so nothing measures the page on every scroll event:
+     an 8px sentinel at the top of the page says whether we've left the very top, and the hero
+     name is watched against the area below the nav. */
   var nav = document.getElementById('nav');
   var heroName = document.querySelector('.hero h1');
   var scrollCue = document.getElementById('scrollCue');
-  var onScroll = function () {
-    if (nav) nav.classList.toggle('is-stuck', window.scrollY > 8);
-    if (nav && heroName) nav.classList.toggle('name-in-view', heroName.getBoundingClientRect().bottom > nav.offsetHeight);
-    if (scrollCue) scrollCue.classList.toggle('is-hidden', window.scrollY > 8);
+  var setScrolled = function (scrolled) {
+    if (nav) nav.classList.toggle('is-stuck', scrolled);
+    if (scrollCue) scrollCue.classList.toggle('is-hidden', scrolled);
   };
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+
+  if ('IntersectionObserver' in window) {
+    var topSentinel = document.createElement('div');
+    topSentinel.setAttribute('aria-hidden', 'true');
+    topSentinel.style.cssText = 'position:absolute;top:0;left:0;width:1px;height:8px;pointer-events:none;visibility:hidden';
+    document.body.appendChild(topSentinel);
+    new IntersectionObserver(function (entries) {
+      setScrolled(!entries[0].isIntersecting);
+    }).observe(topSentinel);
+
+    if (nav && heroName) {
+      new IntersectionObserver(function (entries) {
+        nav.classList.toggle('name-in-view', entries[0].isIntersecting);
+      }, { rootMargin: '-' + nav.offsetHeight + 'px 0px 0px 0px' }).observe(heroName);
+    }
+  } else {
+    var onScroll = function () {
+      setScrolled(window.scrollY > 8);
+      if (nav && heroName) nav.classList.toggle('name-in-view', heroName.getBoundingClientRect().bottom > nav.offsetHeight);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
 
   /* ---------- Reveal on scroll ---------- */
   var reveals = document.querySelectorAll('.reveal');
