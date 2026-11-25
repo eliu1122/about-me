@@ -121,9 +121,8 @@ h1, h2, h3, h4 {
 
 .nav {
   position: sticky; top: 0; z-index: 50;
-  backdrop-filter: saturate(160%) blur(14px);
-  -webkit-backdrop-filter: saturate(160%) blur(14px);
-  background: color-mix(in srgb, var(--paper) 82%, transparent);
+  /* Nearly solid instead of a backdrop blur: the blur had to be redone on every scroll frame. */
+  background: color-mix(in srgb, var(--paper) 96%, transparent);
   border-bottom: 1px solid transparent;
   transition: border-color .25s ease;
 }
@@ -211,8 +210,7 @@ h1, h2, h3, h4 {
   display: flex; align-items: center; gap: .35rem; padding: .4rem .85rem;
   font-family: var(--mono); font-size: .7rem; letter-spacing: .16em; text-transform: uppercase;
   color: var(--muted); text-decoration: none; border-radius: 999px;
-  background: color-mix(in srgb, var(--paper) 82%, transparent);
-  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  background: color-mix(in srgb, var(--paper) 96%, transparent);
   transition: opacity .3s ease, visibility .3s;
 }
 .scroll-cue:hover { color: var(--ink); }
