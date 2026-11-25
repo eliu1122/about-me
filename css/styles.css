@@ -169,11 +169,10 @@ h1, h2, h3, h4 {
 /* ---------- Hero ---------- */
 
 /* The hero sits on its own white band, like Experience, so it reads as a separate zone from
-   Projects. The shadow + clip-path pair bleeds the band to the window edges without
-   widening the page. */
+   Projects. The section spans the window and the .wrap inside it holds the content. */
 .hero {
   padding-block: clamp(1.5rem, 3vw, 2.5rem) clamp(2rem, 3.5vw, 3rem);
-  background: var(--card); box-shadow: 0 0 0 100vmax var(--card); clip-path: inset(0 -100vmax);
+  background: var(--card);
 }
 /* The name spans both columns so it reads on one line instead of wrapping in the text column. */
 .hero__head { margin-bottom: clamp(1.25rem, 2.5vw, 2rem); }
