@@ -246,13 +246,14 @@
   });
 
   /* ---------- Hero slideshow: one project per slide ----------
-     Advances every 6s; pauses while hovered or focused, while the tab is hidden, and for
-     reduced motion. Clicking a slide opens that project's card (via data-open above). */
+     Advances every 6s; pauses while hovered or focused, while scrolled off screen, while the
+     tab is hidden, and for reduced motion. Clicking a slide opens that project's card (via data-open above). */
   document.querySelectorAll('.slides').forEach(function (show) {
     var slides = show.querySelectorAll('.slide');
     var dots = show.querySelectorAll('.slides__dots button');
     var current = 0;
     var timer = null;
+    var offscreen = false;
     var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     var go = function (i) {
@@ -270,7 +271,7 @@
     };
     var stop = function () { clearInterval(timer); timer = null; };
     var start = function () {
-      if (still || timer || document.hidden) return;
+      if (still || timer || offscreen || document.hidden) return;
       timer = setInterval(function () { go(current + 1); }, 6000);
     };
 
@@ -291,6 +292,13 @@
     show.addEventListener('focusin', stop);
     show.addEventListener('focusout', start);
     document.addEventListener('visibilitychange', function () { if (document.hidden) stop(); else start(); });
+    // No cross-fades while it's out of view, so they can't land in the middle of a scroll.
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        offscreen = !entries[0].isIntersecting;
+        if (offscreen) stop(); else start();
+      }).observe(show);
+    }
     start();
   });
 
