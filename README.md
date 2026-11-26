@@ -1,6 +1,6 @@
 # liu-eric.com
 
-Yun-Chung (Eric) Liu's personal site. Plain HTML/CSS/JS, no build step; `main` deploys via GitHub Pages.
+Yun-Chung (Eric) Liu's personal site: plain HTML/CSS/JS, no build step. Pushing to `main` deploys it.
 
 ```bash
 python -m http.server 8000   # http://localhost:8000
@@ -13,5 +13,5 @@ python -m http.server 8000   # http://localhost:8000
 | `caseline-prd.html` | Caseline PRD, not linked from the page yet |
 | `css/styles.css` | Styles; tokens in `:root` |
 | `js/main.js` | Nav, theme, slideshow, demos |
-| `js/analytics.js` | PostHog tracking; `?notrack=1` excludes you |
-| `media/` | Images, video, résumé; see [media/README.md](media/README.md) to add more |
+| `js/analytics.js` | PostHog; `?notrack=1` excludes you |
+| `media/` | Images, video, résumé ([inventory and how to add](media/README.md)) |
